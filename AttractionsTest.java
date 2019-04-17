@@ -9,12 +9,17 @@ import org.junit.jupiter.api.Test;
  */
 class AttractionsTest {
 
+	// Declaring instance variables
+	Attractions destination;
+
 	@BeforeEach
 	void setUp() throws Exception {
+		destination = new Attractions();
 	} // End of the 'setUp' method
 
 	@AfterEach
 	void tearDown() throws Exception {
+		destination = null;
 	} // End of the 'tearDown' method
 
 	@Test
