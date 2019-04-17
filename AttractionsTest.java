@@ -1,39 +1,25 @@
-package Tests;
-
 import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * This is the class that will test the Attractions class
- * 
  * @author Josh Overbeck
  */
 class AttractionsTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
 	@BeforeEach
 	void setUp() throws Exception {
-	}
+	} // End of the 'setUp' method
 
 	@AfterEach
 	void tearDown() throws Exception {
-	}
+	} // End of the 'tearDown' method
 
 	@Test
 	void test() {
 		fail("Not yet implemented");
-	}
+	} // End of the 'test' method
 
-} // End of the 'AttractionsTest' class
+} // End of the 'AttractionsTest' method
