@@ -1,4 +1,4 @@
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,8 +23,9 @@ class AttractionsTest {
 	} // End of the 'tearDown' method
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
-	} // End of the 'test' method
+	void basicTest() {
+		destination = new Attractions();
+		assertNotNull(destination);
+	} // End of the 'basicTest' method
 
 } // End of the 'AttractionsTest' method
