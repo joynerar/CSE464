@@ -48,7 +48,7 @@ class AttractionsTest {
 	@Test
 	void getRideTimeTest() {
 		int expectedRideTime = 15;
-		destination.setWaitTime(expectedRideTime);
+		destination.setRideTime(expectedRideTime);
 		assertEquals(expectedRideTime, destination.getRideTime());
 	} // End of the 'expectedRideTime' method
 
@@ -69,6 +69,7 @@ class AttractionsTest {
 		// Adding the neighbor to 'destination'
 		destination.addNeighbor(neighbor, 5);
 
+		// The test
 		assertEquals(expectedNeighbors, destination.getNeighbors());
 	} // End of the 'getNeighborsTest' method
 
