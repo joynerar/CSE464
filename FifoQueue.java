@@ -3,10 +3,33 @@
  */
 public class FifoQueue {
 
+	// Declaring instance variables
+	private Node	head;
+	private int		size;
+
 	// Default constructor
 	public FifoQueue() {
-
+		// Initializing instance variables
+		head = new Node();
+		size = 0;
 	} // End of the Default Constructor
+
+	// Enqueue
+
+	// Dequeue
+
+	/**
+	 * This is the method that will allow you to peek at the first
+	 * node in the queue.
+	 * 
+	 * @return - The Attractions object associated with the first Node
+	 *         in the queue.
+	 */
+	public Attractions peek() {
+		return head.getData();
+	} // End of the 'peek' method
+
+	// ****************** Node Class *********************************
 
 	/**
 	 * A nested class to allow for node programming.
