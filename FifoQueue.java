@@ -5,6 +5,7 @@ public class FifoQueue {
 
 	// Declaring instance variables
 	private Node	head;
+	private Node	tail;
 	private int		size;
 
 	// Default constructor
@@ -15,6 +16,18 @@ public class FifoQueue {
 	} // End of the Default Constructor
 
 	// Enqueue
+	public void enqueue(Attractions input) {
+		Node tmp = new Node(input);
+		// When size is 0, make it the head
+		if (size == 0) {
+			head = tmp;
+			size++;
+		} else {
+			// When size > 0, add tmp to the back of the line
+			head.setRight(tmp);
+
+		}
+	} // End of the 'enqueue' method
 
 	// Dequeue
 
