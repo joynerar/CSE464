@@ -6,12 +6,14 @@ public class FifoQueue {
 	// Declaring instance variables
 	private Node	head;
 	private Node	tail;
+	private int		size;
 
 	// Default constructor
 	public FifoQueue() {
 		// Initializing instance variables
 		head = new Node();
 		tail = head;
+		size = 0;
 	} // End of the Default Constructor
 
 	/**
@@ -24,12 +26,17 @@ public class FifoQueue {
 	 */
 	public void enqueue(Attractions input) {
 		Node tmp = new Node(input);
-		if (head.equals(tail)) {
+		if (size == 0) {
 			head = tmp;
+			size++;
+		} else if (size == 1) {
+			head.setRight(tmp);
 			tail = head.getRight();
+			size++;
 		} else {
 			tail.setRight(tmp);
 			tail = tail.getRight();
+			size++;
 		}
 	} // End of the 'enqueue' method
 
@@ -48,6 +55,15 @@ public class FifoQueue {
 		}
 		return tmp.getData();
 	} // End of the 'dequeue' method
+
+	/**
+	 * This is the method that will return the size of the queue.
+	 * 
+	 * @return - The size of the queue.
+	 */
+	public int getSize() {
+		return this.size;
+	} // End of the 'getSize' method
 
 	/**
 	 * This is the method that will allow you to peek at the first
