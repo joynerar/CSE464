@@ -6,14 +6,12 @@ public class FifoQueue {
 	// Declaring instance variables
 	private Node	head;
 	private Node	tail;
-	private int		size;
 
 	// Default constructor
 	public FifoQueue() {
 		// Initializing instance variables
 		head = new Node();
 		tail = head;
-		size = 0;
 	} // End of the Default Constructor
 
 	/**
@@ -33,7 +31,6 @@ public class FifoQueue {
 			tail.setRight(tmp);
 			tail = tail.getRight();
 		}
-		size++;
 	} // End of the 'enqueue' method
 
 	/**
