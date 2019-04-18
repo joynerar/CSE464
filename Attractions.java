@@ -21,16 +21,22 @@ public class Attractions {
 		neighbors = new HashMap<Attractions, Integer>();
 	} // End of the default constructor
 
-	public Attractions(String name) {
-		new Attractions(name, -99999, -99999);
-	}
-
+	/**
+	 * @author Adam J
+	 * 
+	 * @param name
+	 *            Attraction Name
+	 * @param waitTime
+	 *            Wait time for a specific attraction
+	 * @param rideTime
+	 *            Duration a user is at a specific attraction
+	 */
 	public Attractions(String name, int waitTime, int rideTime) {
 		this.name = name;
 		this.waitTime = waitTime;
 		this.rideTime = rideTime;
 		neighbors = new HashMap<Attractions, Integer>();
-	}
+	} // End of workhourse constructor
 
 	// ******************* Getters **********************************
 
