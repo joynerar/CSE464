@@ -16,7 +16,14 @@ public class FifoQueue {
 		size = 0;
 	} // End of the Default Constructor
 
-	// Enqueue
+	/**
+	 * This is the method that will add a new Attractions object to
+	 * the queue.
+	 * 
+	 * @param input
+	 *            - The Attractions object that you want to add to the
+	 *            end of the queue.
+	 */
 	public void enqueue(Attractions input) {
 		Node tmp = new Node(input);
 		if (head.equals(tail)) {
@@ -26,9 +33,24 @@ public class FifoQueue {
 			tail.setRight(tmp);
 			tail = tail.getRight();
 		}
+		size++;
 	} // End of the 'enqueue' method
 
-	// Dequeue
+	/**
+	 * This is the method that will return the Attractions object at
+	 * the front of the queue.
+	 * 
+	 * @return - The Attractions object at the front of the queue.
+	 */
+	public Attractions dequeue() {
+		Node tmp = head;
+		if (head.equals(tail)) {
+			head = null;
+		} else {
+			head = head.getRight();
+		}
+		return tmp.getData();
+	} // End of the 'dequeue' method
 
 	/**
 	 * This is the method that will allow you to peek at the first
