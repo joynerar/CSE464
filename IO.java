@@ -13,7 +13,7 @@ public class IO {
 	// ========================================================= Properties
 	private HashMap<String, Attractions> userPrefs;
 	private HashMap<String, Attractions> attractionList;
-	private int totalTime;
+	private int timeAllotted;
 
 	// ========================================================= Constructors
 
@@ -136,7 +136,7 @@ public class IO {
 		Scanner user = new Scanner(new File(userSRC));
 		String line = "";
 		// Gets first line and set its to the totaltime
-		totalTime = Integer.parseInt(user.nextLine());
+		timeAllotted = Integer.parseInt(user.nextLine());
 		while (user.hasNextLine()) {
 			line = user.nextLine();
 			userPrefs.put(line, attractionList.get(line));
@@ -165,13 +165,13 @@ public class IO {
 	/**
 	 * @return the totalTime a user wants to spend in the park
 	 */
-	public int getTotalTime() {
-		return totalTime;
+	public int getTimeAllotted() {
+		return timeAllotted;
 	}
 
 	// MAIN FOR TESTING
 	public static void main(String[] args) {
 		IO z = new IO("map1.txt", "user1.txt", "connect1.txt", "outputfile.txt");
-		System.out.println(z.getTotalTime() / 60 + " hours");
+		System.out.println(z.getTimeAllotted() / 60 + " hours");
 	}
 }
