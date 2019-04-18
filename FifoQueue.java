@@ -12,20 +12,19 @@ public class FifoQueue {
 	public FifoQueue() {
 		// Initializing instance variables
 		head = new Node();
+		tail = head;
 		size = 0;
 	} // End of the Default Constructor
 
 	// Enqueue
 	public void enqueue(Attractions input) {
 		Node tmp = new Node(input);
-		// When size is 0, make it the head
-		if (size == 0) {
-			head = tmp;
-			size++;
-		} else {
-			// When size > 0, add tmp to the back of the line
+		if (head.equals(tail)) {
 			head.setRight(tmp);
-
+			tail = head.getRight();
+		} else {
+			tail.setRight(tmp);
+			tail = tail.getRight();
 		}
 	} // End of the 'enqueue' method
 
