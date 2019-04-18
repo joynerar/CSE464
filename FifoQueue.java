@@ -158,7 +158,7 @@ public class FifoQueue {
 
 	public int getSize() {
 		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 
 } // End of the 'FifoQueue' class
