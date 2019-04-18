@@ -13,6 +13,7 @@ public class IO {
 	// ========================================================= Properties
 	private HashMap<String, Attractions> userPrefs;
 	private HashMap<String, Attractions> attractionList;
+	private int totalTime;
 
 	// ========================================================= Constructors
 
@@ -134,7 +135,8 @@ public class IO {
 	private void getUserPrefs(String userSRC) throws FileNotFoundException {
 		Scanner user = new Scanner(new File(userSRC));
 		String line = "";
-
+		// Gets first line and set its to the totaltime
+		totalTime = Integer.parseInt(user.nextLine());
 		while (user.hasNextLine()) {
 			line = user.nextLine();
 			userPrefs.put(line, attractionList.get(line));
@@ -160,8 +162,16 @@ public class IO {
 		return attractionList;
 	}
 
+	/**
+	 * @return the totalTime a user wants to spend in the park
+	 */
+	public int getTotalTime() {
+		return totalTime;
+	}
+
 	// MAIN FOR TESTING
 	public static void main(String[] args) {
 		IO z = new IO("map1.txt", "user1.txt", "connect1.txt", "outputfile.txt");
+		System.out.println(z.getTotalTime() / 60 + " hours");
 	}
 }
