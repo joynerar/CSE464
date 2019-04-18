@@ -1,31 +1,32 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class IO {
-	ArrayList<String> userPrefs;
-	ArrayList<Attractions> attractionList;
+	HashMap<String, Attractions> userPrefs;
+	// ArrayList<Attractions> attractionList;
+	HashMap<String, Attractions> attractionList;
 
-	public IO(String mapSRC, String userSRC, String outSRC) {
-		userPrefs = new ArrayList<String>();
-		attractionList = new ArrayList<Attractions>();
+	public IO(String mapSRC, String userSRC, String connectionSRC, String outSRC) {
+		userPrefs = new HashMap<String, Attractions>();
+		attractionList = new HashMap<String, Attractions>();
+		createRideMap(mapSRC, connectionSRC, userSRC);
+
+	}
+
+	private void createRideMap(String mapSRC, String connectionSRC, String userSRC) {
 		try {
-			createRideMap(mapSRC);
+			loadRides(mapSRC);
+			loadConnections(connectionSRC);
 			getUserPrefs(userSRC);
 		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private void getUserPrefs(String userSRC) throws FileNotFoundException {
-		Scanner user = new Scanner(new File(userSRC));
-		while (user.hasNextLine())
-			userPrefs.add(user.nextLine());
-		user.close();
-	}
-
-	private void createRideMap(String mapSRC) throws FileNotFoundException {
+	private void loadRides(String mapSRC) throws FileNotFoundException {
 		String[] line;
 
 		Scanner map = new Scanner(new File(mapSRC));
@@ -39,21 +40,40 @@ public class IO {
 			int waitTime = Integer.parseInt(line[1]);
 			int rideTime = Integer.parseInt(line[2]);
 
-			// Creates new Attractions object
-			Attractions a = new Attractions(name, waitTime, rideTime);
-
-			// Adds Attractions to neighbors list
-			for (int i = 3; i < line.length; i++) {
-				a.addNeighbor(new Attractions(line[i]), Integer.parseInt(line[++i]));
-			}
-
 			// Adds Attraction to IO list
-			attractionList.add(a);
+			attractionList.put(name, new Attractions(name, waitTime, rideTime));
 		}
 		map.close();
 	}
 
+	// Adds connections
+	private void loadConnections(String connectionSRC) throws FileNotFoundException {
+		String[] line;
+
+		Scanner connect = new Scanner(new File(connectionSRC));
+		connect.nextLine();
+		while (connect.hasNextLine()) {
+			// Gets line and splits on tabs
+			line = connect.nextLine().split("\t");
+			Attractions a = attractionList.get(line[0]);
+			for (int i = 2; i < line.length; i++) {
+				a.addNeighbor(attractionList.get(line[i]), Integer.parseInt(line[++i]));
+			}
+		}
+		connect.close();
+	}
+
+	private void getUserPrefs(String userSRC) throws FileNotFoundException {
+		Scanner user = new Scanner(new File(userSRC));
+		String line = "";
+		while (user.hasNextLine()) {
+			line = user.nextLine();
+			userPrefs.put(line, attractionList.get(line));
+		}
+		user.close();
+	}
+
 	public static void main(String[] args) {
-		IO z = new IO("map1.txt", "user1.txt", "w");
+		IO z = new IO("map1.txt", "user1.txt", "connect1.txt", "outputfile.txt");
 	}
 }
