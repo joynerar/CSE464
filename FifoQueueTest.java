@@ -37,10 +37,31 @@ class FifoQueueTest {
 		Attractions expected = new Attractions();
 		fifo.enqueue(expected);
 		assertSame(expected, fifo.peek());
-	} // End of the 'testEnqueue' method
+	} // End of the 'testEnqueue01' method
 
 	@Test
 	void testEnqueue02() {
+		Attractions one = new Attractions();
+		one.setName("batman");
+		fifo.enqueue(one);
+
+		Attractions two = new Attractions();
+		two.setName("ironman");
+		fifo.enqueue(two);
+
+		Attractions expected = new Attractions();
+		expected.setName("Spiderman");
+		fifo.enqueue(expected);
+
+		Attractions result = fifo.dequeue();
+		result = fifo.dequeue();
+		result = fifo.dequeue();
+
+		assertSame(expected, result);
+	} // End of the 'testEnqueue02' method
+
+	@Test
+	void testEnqueue03() {
 		Attractions one = new Attractions();
 		one.setName("batman");
 		fifo.enqueue(one);
@@ -53,7 +74,7 @@ class FifoQueueTest {
 		Attractions result = fifo.dequeue();
 
 		assertSame(expected, result);
-	} // End of the 'testEnqueue' method
+	} // End of the 'testEnqueue 03' method
 
 	@Test
 	void testDequeue() {
