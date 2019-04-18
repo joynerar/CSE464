@@ -6,9 +6,9 @@ import java.util.HashMap;
 public class Attractions {
 
 	// Declaring instance variables
-	private String name;
-	private int waitTime;
-	private int rideTime;
+	private String	name;
+	private int		waitTime;
+	private int		rideTime;
 
 	private HashMap<Attractions, Integer> neighbors;
 
@@ -23,7 +23,6 @@ public class Attractions {
 
 	/**
 	 * @author Adam J
-	 * 
 	 * @param name
 	 *            Attraction Name
 	 * @param waitTime
@@ -68,8 +67,8 @@ public class Attractions {
 	} // End of the 'getRideTime' method
 
 	/**
-	 * This is the getter method for the neighbors of this instance of the
-	 * Attractions class.
+	 * This is the getter method for the neighbors of this instance of
+	 * the Attractions class.
 	 * 
 	 * @return - The HashMap containing the neighbors.
 	 */
@@ -79,18 +78,49 @@ public class Attractions {
 
 	// ******************* Setters *********************************
 
+	/**
+	 * This is the method that will set the name of the Attractions
+	 * object.
+	 * 
+	 * @param name
+	 *            - Input for the name of the Attractions object.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	} // End of the 'setName' method
 
+	/**
+	 * This is the method that will set the wait time of the
+	 * Atractions object.
+	 * 
+	 * @param waitTime
+	 *            - The wait time of the Attractions object.
+	 */
 	public void setWaitTime(int waitTime) {
 		this.waitTime = waitTime;
 	} // End of the 'setWaitTime' method
 
+	/**
+	 * This is the method that will set the ride time of the
+	 * Attractions object.
+	 * 
+	 * @param rideTime
+	 *            - The ride time of the Attractions object.
+	 */
 	public void setRideTime(int rideTime) {
 		this.rideTime = rideTime;
 	} // End of the 'setRideTime' method
 
+	/**
+	 * This is the method that will add a neighbor to the Attractions
+	 * object.
+	 * 
+	 * @param neighbor
+	 *            - The new Neighbor
+	 * @param edgeWeight
+	 *            - The edge weight between the two Attractions
+	 *            objects.
+	 */
 	public void addNeighbor(Attractions neighbor, int edgeWeight) {
 		neighbors.put(neighbor, edgeWeight);
 	} // End of the 'addNeighbor' method
