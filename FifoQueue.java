@@ -25,7 +25,7 @@ public class FifoQueue {
 	public void enqueue(Attractions input) {
 		Node tmp = new Node(input);
 		if (head.equals(tail)) {
-			head.setRight(tmp);
+			head = tmp;
 			tail = head.getRight();
 		} else {
 			tail.setRight(tmp);

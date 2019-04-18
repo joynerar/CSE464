@@ -1,4 +1,5 @@
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,22 +27,30 @@ class FifoQueueTest {
 
 	@Test
 	void testFifoQueue() {
-		fail("Not yet implemented");
+		fifo = new FifoQueue();
+		assertNotNull(fifo);
 	} // End of the 'testFifoQueue' method
 
 	@Test
 	void testEnqueue() {
-		fail("Not yet implemented");
+		Attractions expected = new Attractions();
+		fifo.enqueue(expected);
+		assertSame(expected, fifo.peek());
 	} // End of the 'testEnqueue' method
 
 	@Test
 	void testDequeue() {
-		fail("Not yet implemented");
+		Attractions expected = new Attractions();
+		fifo.enqueue(expected);
+		Attractions result = fifo.dequeue();
+		assertSame(expected, result);
 	} // End of the 'testDequeue' method
 
 	@Test
 	void testPeek() {
-		fail("Not yet implemented");
+		Attractions expected = new Attractions();
+		fifo.enqueue(expected);
+		assertSame(expected, fifo.peek());
 	} // End of the 'testPeek' method
 
 } // End of the 'FifoQueueTest' class
