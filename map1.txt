@@ -1,0 +1,4 @@
+RIDENAME	WAITTIME	RIDETIME	Connnection1 weight1	Connection2 weight 2 .... 
+Thunder Mountain	15	10	Bathroom 1	5	KurleeKone	7
+Bathroom 1	4	10	ThunderMountain	5
+Kurlee Kone	6	76	Thunder Mountain	7

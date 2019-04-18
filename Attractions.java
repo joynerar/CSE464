@@ -6,9 +6,9 @@ import java.util.HashMap;
 public class Attractions {
 
 	// Declaring instance variables
-	private String	name;
-	private int		waitTime;
-	private int		rideTime;
+	private String name;
+	private int waitTime;
+	private int rideTime;
 
 	private HashMap<Attractions, Integer> neighbors;
 
@@ -20,6 +20,17 @@ public class Attractions {
 		this.rideTime = -99999;
 		neighbors = new HashMap<Attractions, Integer>();
 	} // End of the default constructor
+
+	public Attractions(String name) {
+		new Attractions(name, -99999, -99999);
+	}
+
+	public Attractions(String name, int waitTime, int rideTime) {
+		this.name = name;
+		this.waitTime = waitTime;
+		this.rideTime = rideTime;
+		neighbors = new HashMap<Attractions, Integer>();
+	}
 
 	// ******************* Getters **********************************
 
@@ -51,8 +62,8 @@ public class Attractions {
 	} // End of the 'getRideTime' method
 
 	/**
-	 * This is the getter method for the neighbors of this instance of
-	 * the Attractions class.
+	 * This is the getter method for the neighbors of this instance of the
+	 * Attractions class.
 	 * 
 	 * @return - The HashMap containing the neighbors.
 	 */
