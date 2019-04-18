@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -12,7 +13,9 @@ import java.util.Scanner;
 public class IO {
 	// ========================================================= Properties
 	private HashMap<String, Attractions> userPrefs;
+	private ArrayList<String> userPrefKeys;
 	private HashMap<String, Attractions> attractionList;
+	private ArrayList<String> attractionKeys;
 	private int timeAllotted;
 
 	// ========================================================= Constructors
@@ -33,6 +36,7 @@ public class IO {
 	public IO(String attractionSRC, String userSRC, String connectionSRC, String outSRC) {
 		userPrefs = new HashMap<String, Attractions>();
 		attractionList = new HashMap<String, Attractions>();
+		attractionKeys = new ArrayList<String>();
 		createRideMap(attractionSRC, connectionSRC, userSRC);
 	} // end Constructor
 
@@ -76,6 +80,7 @@ public class IO {
 		Scanner map = new Scanner(new File(attractionSRC));
 		// skips first line
 		map.nextLine();
+
 		while (map.hasNextLine()) {
 
 			// Gets line and splits on tabs
@@ -88,6 +93,7 @@ public class IO {
 
 			// Adds Attraction to IO list
 			attractionList.put(name, new Attractions(name, waitTime, rideTime));
+			attractionKeys.add(name);
 		}
 		map.close(); // Closes Scanner
 	} // end loadRides
@@ -140,6 +146,7 @@ public class IO {
 		while (user.hasNextLine()) {
 			line = user.nextLine();
 			userPrefs.put(line, attractionList.get(line));
+			userPrefKeys.add(line);
 		}
 		user.close();
 	} // end getUserPrefs
@@ -169,9 +176,32 @@ public class IO {
 		return timeAllotted;
 	}
 
+	/**
+	 * 
+	 * @return a list of the string keys of the map
+	 */
+	public ArrayList<String> getMapKeys() {
+		return attractionKeys;
+	}
+
+	/**
+	 * @return the userPrefKeys
+	 */
+	public ArrayList<String> getUserPrefKeys() {
+		return userPrefKeys;
+	}
+
+	/**
+	 * @return the attractionKeys
+	 */
+	public ArrayList<String> getAttractionKeys() {
+		return attractionKeys;
+	}
+
 	// MAIN FOR TESTING
 	public static void main(String[] args) {
 		IO z = new IO("map1.txt", "user1.txt", "connect1.txt", "outputfile.txt");
 		System.out.println(z.getTimeAllotted() / 60 + " hours");
 	}
+
 }

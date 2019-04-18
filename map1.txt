@@ -1,4 +1,5 @@
 RIDENAME	WAITTIME	RIDETIME
+ENTRANCE	0	0
 Thunder Mountain	15	10
 Bathroom 1	4	10
 Kurlee Kone	6	76
