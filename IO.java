@@ -114,7 +114,7 @@ public class IO {
 			// Gets attraction from list
 			Attractions a = attractionList.get(line[0]);
 			// Wires in connections
-			for (int i = 2; i < line.length; i++) {
+			for (int i = 1; i < line.length; i++) {
 				a.addNeighbor(attractionList.get(line[i]), Integer.parseInt(line[++i]));
 			}
 		}
