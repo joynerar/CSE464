@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 
@@ -108,5 +109,62 @@ class FifoQueueTest {
 		Attractions result = fifo.peek();
 		assertSame(expected, result);
 	} // End of the 'testPeek02' method
+
+	@Test
+	void testGetSize01() {
+		int expected = 0;
+		int result = fifo.getSize();
+		assertEquals(expected, result);
+	} // End of the 'testGetSize01' method
+
+	@Test
+	void testGetSize02() {
+		Attractions tmp = new Attractions();
+		fifo.enqueue(tmp);
+
+		int expected = 1;
+		int result = fifo.getSize();
+
+		assertEquals(expected, result);
+	} // End of the 'testGetSize02' method
+
+	@Test
+	void testGetSize03() {
+		Attractions tmp = new Attractions();
+		fifo.enqueue(tmp);
+		fifo.enqueue(tmp);
+
+		int expected = 2;
+		int result = fifo.getSize();
+
+		assertEquals(expected, result);
+	} // End of the 'testGetSize03' method
+
+	@Test
+	void testGetSize04() {
+		Attractions tmp = new Attractions();
+		fifo.enqueue(tmp);
+		fifo.enqueue(tmp);
+		fifo.enqueue(tmp);
+
+		int expected = 3;
+		int result = fifo.getSize();
+
+		assertEquals(expected, result);
+	} // End of the 'testGetSize04' method
+
+	@Test
+	void testGetSize05() {
+		Attractions tmp = new Attractions();
+		int expected = 0;
+
+		for (int i = 0; i < 50; i++) {
+			fifo.enqueue(tmp);
+			expected++;
+		}
+
+		int result = fifo.getSize();
+		assertEquals(expected, result);
+	} // End of the 'testGetSize05' method
 
 } // End of the 'FifoQueueTest' class
