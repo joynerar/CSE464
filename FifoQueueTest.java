@@ -78,6 +78,24 @@ class FifoQueueTest {
 	} // End of the 'testEnqueue 03' method
 
 	@Test
+	void testEnqueue04() {
+		Attractions tmp = new Attractions();
+		Attractions[] holder = new Attractions[50];
+
+		for (int i = 0; i < 50; i++) {
+			tmp.setName(Integer.toString(i));
+			holder[i] = tmp;
+			fifo.enqueue(tmp);
+		}
+
+		for (int j = 0; j < fifo.getSize(); j++) {
+			Attractions result = fifo.dequeue();
+			Attractions expected = holder[j];
+			assertEquals(expected, result);
+		}
+	} // End of the 'testEnqueue04' method
+
+	@Test
 	void testDequeue() {
 		Attractions expected = new Attractions();
 		fifo.enqueue(expected);
