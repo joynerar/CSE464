@@ -37,6 +37,7 @@ public class IO {
 		userPrefs = new HashMap<String, Attractions>();
 		attractionList = new HashMap<String, Attractions>();
 		attractionKeys = new ArrayList<String>();
+		userPrefKeys = new ArrayList<String>();
 		createRideMap(attractionSRC, connectionSRC, userSRC);
 	} // end Constructor
 
