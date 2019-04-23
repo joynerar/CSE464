@@ -40,7 +40,7 @@ public class BFS {
 	 * @return - The fifo queue containing the path to the target
 	 *         Attraction.
 	 */
-	public FifoQueue getPath(Attractions target,
+	public Attractions[] getPath(Attractions target,
 			Attractions currentPos, double remainingTime) {
 		// Initializing the queue and the time variables
 		queue = new FifoQueue();
@@ -68,13 +68,17 @@ public class BFS {
 				if (!ridemap.get(i + index).isVisited()) {
 					ridemap.get(i + index).setVisited(true);
 					queue.enqueue(ridemap.get(index + i));
+					if (ridemap.get(index + i).equals(target)) {
+						break;
+					}
 				}
 			}
 
 			index++;
 		}
 
-		return queue;
+		// return queue;
+		return path;
 	} // End of the 'getPath' method
 
 	/**
