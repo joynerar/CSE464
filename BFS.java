@@ -45,8 +45,11 @@ public class BFS {
 		// Initializing the queue and the time variables
 		queue = new FifoQueue();
 		time = 0;
+		int startingPoint = getStartingPointIndex(currentPos);
 
 		for (int i = 0; i < ridemap.size(); i++) {
+
+			int index = (startingPoint + i) % ridemap.size();
 			if (!ridemap.get(i).isVisited()) {
 
 			}
@@ -106,5 +109,25 @@ public class BFS {
 		}
 		return index;
 	} // End of the 'extractMin' method
+
+	/**
+	 * This is a private helper method that will find the index of the
+	 * current position from the ridemap list.
+	 * 
+	 * @param root
+	 *            - The Attractions object that represents the
+	 *            starting point from within the map.
+	 * @return - The index of the starting point from within the
+	 *         ridemap list.
+	 */
+	private int getStartingPointIndex(Attractions root) {
+		int result = -99999;
+		for (int i = 0; i < ridemap.size(); i++) {
+			if (ridemap.get(i).equals(root)) {
+				result = i;
+			}
+		}
+		return result;
+	} // End of the 'getStartingPointIndex'method
 
 } // End of the 'BFS' class
