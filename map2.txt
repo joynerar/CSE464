@@ -1,0 +1,32 @@
+RIDENAME	WAITTIME	RIDETIME
+ENTRANCE	0	0
+Astro Orbiter	25	10
+The Barnstormer	15	5
+Big Thunder Mountain Railroad	60	7
+Buzz Lightyear's Space Ranger Spin	52	12
+Cinderella Castle	0	4
+Country Bear Jamboree	15	5
+Dumbo the Flying Elephant	10	8
+Enchanted Tiki Room	23	11
+The Hall of Presidents	15	28
+Haunted Mansion	45	14
+It's a Small World	55	18
+Jungle Cruise	24	17
+Liberty Square Riverboat	4	35
+Mad Tea Party	15	5
+The Magic Carpets of Aladdin	10	8
+The Many Adventures of Winnie the Pooh	35	14
+Mickey's Philharmagic	20	22
+Monsters, Inc. Laugh Floor	48	22
+Peter Pan's Flight	55	9
+Pirates of the Caribbean	35	13
+Prince Charming Regal Carrousel	17	9
+Seven Dwarfs Mine Train	125	10
+Space Mountain	78	13
+Splash Mountain	35	9
+Swiss Family Treehouse	0	10
+Tom Sawyer Island	0	30
+Tomorrowland Transit Authority PeopleMover	25	15
+Under the Sea ~ Journey of The Little Mermaid	65	12
+Walt Disney World Railroad	10	10
+Walt Disney's Carousel of Progress	3	18

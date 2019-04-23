@@ -1,0 +1,41 @@
+RIDENAME1	Ridename2	weight
+ENTRANCE	Cinderella Castle	8
+ENTRANCE	Walt Disney World Railroad	1
+Cinderella Castle	Astro Orbiter 5
+Cinderella Castle	Prince Charming Regal Carrousel	3
+Cinderella Castle	The Hall of Presidents	3
+Cinderella Castle	Walt Disney World Railroad 7
+Cinderella Castle	Mickey's Philharmagic	6
+Cinderella Castle	Mad Tea Party	4
+Cinderella Castle	Swiss Family Treehouse	6
+Astro Orbiter	Buzz Lightyear's Space Ranger Spin 3
+Astro Orbiter	Monsters, Inc. Laugh Floor	3
+Astro Orbiter	Space Mountain	4
+Astro Orbiter	Walt Disney's Carousel of Progress	2
+Astro Orbiter	Tomorrowland Transit Authority PeopleMover	1
+Astro Orbiter	Mad Tea Party	4
+Mad Tea Party	Dumbo the Flying Elephant	5
+Mad Tea Party	Seven Dwarfs Mine Train	3
+Mad Tea Party	Under the Sea ~ Journey of The Little Mermaid	6
+Mad Tea Party	The Many Adventures of Winnie the Pooh	3
+Mad Tea Party	Prince Charming Regal Carrousel	6
+Dumbo the Flying Elephant	The Barnstormer	2
+Seven Dwarfs Mine Train	The Many Adventures of Winnie the Pooh	1
+Prince Charming Regal Carrousel	Under the Sea ~ Journey of The Little Mermaid	9
+Prince Charming Regal Carrousel	It's a Small World	4
+Prince Charming Regal Carrousel	Peter Pan's Flight	4
+Mickey's Philharmagic	It's a Small World	1
+Mickey's Philharmagic	Peter Pan's Flight	1
+Mickey's Philharmagic	Haunted Mansion	6
+Haunted Mansion	Liberty Square Riverboat	3
+The Hall of Presidents	Liberty Square Riverboat	2
+Liberty Square Riverboat	Tom Sawyer Island	6
+Tom Sawyer Island	Splash Mountain	4
+Splash Mountain	Big Thunder Mountain Railroad	2
+Splash Mountain	Pirates of the Caribbean	3
+Pirates of the Caribbean	Jungle Cruise	2
+Jungle Cruise	Enchanted Tiki Room	1
+Jungle Cruise	The Magic Carpets of Aladdin	1
+The Magic Carpets of Aladdin	Tom Sawyer Island	3
+Enchanted Tiki Room	The Magic Carpets of Aladdin	1
+Swiss Family Treehouse	The Magic Carpets of Aladdin	3
