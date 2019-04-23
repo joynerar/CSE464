@@ -119,12 +119,15 @@ public class IO {
 		while (connect.hasNextLine()) {
 			// Gets line and splits on tabs
 			line = connect.nextLine().split("\t");
-			// Gets attraction from list
-			Attractions a = attractionList.get(line[0]);
+			// Gets attractions from list
+			Attractions a1 = attractionList.get(line[0]);
+			Attractions a2 = attractionList.get(line[1]);
+			int weight = Integer.parseInt(line[2]);
 			// Wires in connections
-			for (int i = 1; i < line.length; i++) {
-				a.addNeighbor(attractionList.get(line[i]), Integer.parseInt(line[++i]));
-			}
+			a1.addNeighbor(a2, weight);
+			a2.addNeighbor(a1, weight);
+			System.out.println(a1.getNeighbors().toString());
+
 		}
 		connect.close(); // Closes Scanner
 	} // end loadConnection
@@ -203,6 +206,9 @@ public class IO {
 	public static void main(String[] args) {
 		IO z = new IO("map1.txt", "user1.txt", "connect1.txt", "outputfile.txt");
 		System.out.println(z.getTimeAllotted() / 60 + " hours");
+		HashMap<Attractions, Integer> test = z.attractionList.get("Bathroom 1").getNeighbors();
+		System.out.println(
+				z.attractionList.get("Bathroom 1").getNeighbors().get(z.attractionList.get("Thunder Mountain")));
 	}
 
 }

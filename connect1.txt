@@ -1,4 +1,5 @@
-RIDENAME	Connnection1 weight1	Connection2 weight 2 .... 
-Thunder Mountain	Bathroom 1	5	KurleeKone	7
-Bathroom 1	ThunderMountain	5
-Kurlee Kone	Thunder Mountain	7
+RIDENAME1	Ridename2	weight
+ENTRANCE	Bathroom 1	5
+Thunder Mountain	Bathroom 1	10
+Thunder Mountain	Kurlee Kone	8
+Bathroom 1	Kurlee Kone	3
