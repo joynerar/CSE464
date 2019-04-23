@@ -9,7 +9,7 @@ public class Attractions {
 	private String	name;
 	private int		waitTime;
 	private int		rideTime;
-
+	private boolean	isVisited;
 	// private HashMap<Attractions, Integer> neighbors;
 	ArrayList<Neighbor> neighbors;
 
@@ -19,6 +19,7 @@ public class Attractions {
 		this.name = "";
 		this.waitTime = -99999; // Using negative to represent null;
 		this.rideTime = -99999;
+		this.isVisited = false;
 		// neighbors = new HashMap<Attractions, Integer>();
 		neighbors = new ArrayList<Neighbor>();
 	} // End of the default constructor
@@ -36,6 +37,7 @@ public class Attractions {
 		this.name = name;
 		this.waitTime = waitTime;
 		this.rideTime = rideTime;
+		this.isVisited = false;
 		// neighbors = new HashMap<Attractions, Integer>();
 		this.neighbors = new ArrayList<Neighbor>();
 	} // End of workhourse constructor
@@ -131,5 +133,23 @@ public class Attractions {
 		input.setEdgeWeight(edgeWeight);
 		neighbors.add(input);
 	} // End of the 'addNeighbor' method
+
+	/**
+	 * This is the method that will return the state of the isVisited
+	 * variable.
+	 * 
+	 * @return - The state of the isVisited variable.
+	 */
+	public boolean isVisited() {
+		return this.isVisited;
+	} // End of the 'isVisited' method
+
+	/**
+	 * This is the method that will reset the isVisited variable to
+	 * false.
+	 */
+	public void resetVisited() {
+		this.isVisited = false;
+	} // End of the 'resetVisited' method
 
 } // End of the 'Attractions' class

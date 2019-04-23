@@ -44,6 +44,10 @@ public class BFS {
 		queue = new FifoQueue();
 		time = 0;
 
+		for (int i = 0; i < ridemap.length; i++) {
+
+		}
+
 		return queue;
 	} // End of the 'getPath' method
 
