@@ -117,6 +117,18 @@ public class Attractions {
 	} // End of the 'setRideTime' method
 
 	/**
+	 * This is the method that will set the state of the isVisited
+	 * variable.
+	 * 
+	 * @param visited
+	 *            - The state that you would like to set for the
+	 *            isVisited variable.
+	 */
+	public void setVisited(boolean visited) {
+		this.isVisited = visited;
+	} // End of the 'setVisited' method
+
+	/**
 	 * This is the method that will add a neighbor to the Attractions
 	 * object.
 	 * 

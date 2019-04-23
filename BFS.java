@@ -47,13 +47,16 @@ public class BFS {
 		time = 0;
 		int startingPoint = getStartingPointIndex(currentPos);
 
-		for (int i = 0; i < ridemap.size(); i++) {
+		// for (int i = 0; i < ridemap.size(); i++) {
+		//
+		// int index = (startingPoint + i) % ridemap.size();
+		// if (!ridemap.get(index).isVisited()) {
+		//
+		// }
+		// }
 
-			int index = (startingPoint + i) % ridemap.size();
-			if (!ridemap.get(i).isVisited()) {
-
-			}
-		}
+		queue.enqueue(target);
+		target.
 
 		return queue;
 	} // End of the 'getPath' method
@@ -129,5 +132,13 @@ public class BFS {
 		}
 		return result;
 	} // End of the 'getStartingPointIndex'method
+
+	private void markVisite(Attractions current) {
+		for (int i = 0; i < ridemap.size(); i++) {
+			if (ridemap.get(i).equals(current)) {
+				ridemap.get(i).setVisited(true);
+			}
+		}
+	}
 
 } // End of the 'BFS' class
