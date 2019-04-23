@@ -47,7 +47,9 @@ public class BFS {
 		time = 0;
 
 		for (int i = 0; i < ridemap.size(); i++) {
+			if (!ridemap.get(i).isVisited()) {
 
+			}
 		}
 
 		return queue;
@@ -80,5 +82,29 @@ public class BFS {
 			ridemap.get(i).resetVisited();
 		}
 	} // End of the 'initVisitedList' method
+
+	/**
+	 * This is the method that will return the index of the neighbor
+	 * with the lowest edge weight.
+	 * 
+	 * @param neighbors
+	 *            - The list of neighbors.
+	 * @return - The index of the neighbor with the lowest edge
+	 *         weight.
+	 */
+	private int extractMin(ArrayList<Neighbor> neighbors) {
+		int index = 0;
+		int min = neighbors.get(index).getEdgeWeight();
+
+		for (int i = 1; i < neighbors.size(); i++) {
+			if (!(neighbors.get(i).getNeighbor().isVisited())) {
+				if (neighbors.get(i).getEdgeWeight() < min) {
+					min = neighbors.get(i).getEdgeWeight();
+					index = i;
+				}
+			}
+		}
+		return index;
+	} // End of the 'extractMin' method
 
 } // End of the 'BFS' class
