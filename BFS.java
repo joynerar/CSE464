@@ -46,6 +46,7 @@ public class BFS {
 		queue = new FifoQueue();
 		time = 0;
 		int startingPoint = getStartingPointIndex(currentPos);
+		Attractions[] path = new Attractions[ridemap.size()];
 
 		// for (int i = 0; i < ridemap.size(); i++) {
 		//
@@ -56,7 +57,22 @@ public class BFS {
 		// }
 
 		queue.enqueue(target);
-		target.
+		markVisited(target);
+
+		int index = 0;
+
+		while (queue.getSize() > 0) {
+			path[index] = queue.dequeue();
+			for (int i = 0; i < ridemap.get(index).getNeighbors()
+					.size(); i++) {
+				if (!ridemap.get(i + index).isVisited()) {
+					ridemap.get(i + index).setVisited(true);
+					queue.enqueue(ridemap.get(index + i));
+				}
+			}
+
+			index++;
+		}
 
 		return queue;
 	} // End of the 'getPath' method
@@ -133,7 +149,7 @@ public class BFS {
 		return result;
 	} // End of the 'getStartingPointIndex'method
 
-	private void markVisite(Attractions current) {
+	private void markVisited(Attractions current) {
 		for (int i = 0; i < ridemap.size(); i++) {
 			if (ridemap.get(i).equals(current)) {
 				ridemap.get(i).setVisited(true);
