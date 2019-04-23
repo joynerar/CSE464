@@ -8,6 +8,7 @@ public class BFS {
 	// Declaring instance variables
 	private Attractions[][]	ridemap;
 	private Attractions		target;						// obsolete
+	private FifoQueue		queue;
 	private final String	ENTRANCE	= "ENTRANCE";
 	private double			time;
 
@@ -27,13 +28,20 @@ public class BFS {
 	 * path.
 	 * 
 	 * @param target
-	 *            - The Attraction that a path to is needed.
-	 * @return - A Fifo queue containing the path to the target.
+	 *            - The Attraction that you are looking for.
+	 * @param currentPos
+	 *            - The Attractions that you are currently at.
+	 * @param remainingTime
+	 *            - The amount of time that you have remaining.
+	 * @return - The fifo queue containing the path to the target
+	 *         Attraction.
 	 */
-	public FifoQueue getPath(Attractions target) {
-		FifoQueue que = new FifoQueue();
+	public FifoQueue getPath(Attractions target,
+			Attractions currentPos, double remainingTime) {
+		// Initializing the queue
+		queue = new FifoQueue();
 
-		return que;
+		return queue;
 	} // End of the 'getPath' method
 
 	/**
