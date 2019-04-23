@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * @author Josh Overbeck
@@ -10,7 +10,8 @@ public class Attractions {
 	private int		waitTime;
 	private int		rideTime;
 
-	private HashMap<Attractions, Integer> neighbors;
+	// private HashMap<Attractions, Integer> neighbors;
+	ArrayList<Neighbor> neighbors;
 
 	// Default constructor
 	public Attractions() {
@@ -18,7 +19,8 @@ public class Attractions {
 		this.name = "";
 		this.waitTime = -99999; // Using negative to represent null;
 		this.rideTime = -99999;
-		neighbors = new HashMap<Attractions, Integer>();
+		// neighbors = new HashMap<Attractions, Integer>();
+		neighbors = new ArrayList<Neighbor>();
 	} // End of the default constructor
 
 	/**
@@ -34,7 +36,8 @@ public class Attractions {
 		this.name = name;
 		this.waitTime = waitTime;
 		this.rideTime = rideTime;
-		neighbors = new HashMap<Attractions, Integer>();
+		// neighbors = new HashMap<Attractions, Integer>();
+		this.neighbors = new ArrayList<Neighbor>();
 	} // End of workhourse constructor
 
 	// ******************* Getters **********************************
@@ -70,9 +73,9 @@ public class Attractions {
 	 * This is the getter method for the neighbors of this instance of
 	 * the Attractions class.
 	 * 
-	 * @return - The HashMap containing the neighbors.
+	 * @return - The list of the neighbors.
 	 */
-	public HashMap<Attractions, Integer> getNeighbors() {
+	public ArrayList<Neighbor> getNeighbors() {
 		return neighbors;
 	} // End of the 'getNeighbors' method
 
@@ -91,7 +94,7 @@ public class Attractions {
 
 	/**
 	 * This is the method that will set the wait time of the
-	 * Atractions object.
+	 * Attractions object.
 	 * 
 	 * @param waitTime
 	 *            - The wait time of the Attractions object.
@@ -116,13 +119,17 @@ public class Attractions {
 	 * object.
 	 * 
 	 * @param neighbor
-	 *            - The new Neighbor
+	 *            - The neighbor that you would like to add to the
+	 *            list of neighbors.
 	 * @param edgeWeight
-	 *            - The edge weight between the two Attractions
-	 *            objects.
+	 *            - The amount of time it takes to travel between
+	 *            current Attraction and the neighbor.
 	 */
 	public void addNeighbor(Attractions neighbor, int edgeWeight) {
-		neighbors.put(neighbor, edgeWeight);
+		Neighbor input = new Neighbor();
+		input.setNeighbor(neighbor);
+		input.setEdgeWeight(edgeWeight);
+		neighbors.add(input);
 	} // End of the 'addNeighbor' method
 
 } // End of the 'Attractions' class

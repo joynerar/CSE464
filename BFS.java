@@ -9,8 +9,9 @@ public class BFS {
 	private Attractions[][]	ridemap;
 	private Attractions		target;						// obsolete
 	private FifoQueue		queue;
-	private final String	ENTRANCE	= "ENTRANCE";
+	private final String	ENTRANCE	= "ENTRANCE";	// obsolete
 	private double			time;
+	private boolean[]		visited;
 
 	// Default Constructor
 	public BFS() {
@@ -18,6 +19,7 @@ public class BFS {
 		this.ridemap = new Attractions[10][10];
 		this.target = new Attractions();
 		this.time = 0;
+		initVisitedList();
 	} // End of the Default Constructor
 
 	/**
@@ -62,5 +64,16 @@ public class BFS {
 		boolean result = false;
 		return result;
 	} // End of the 'checkTime' method
+
+	/**
+	 * A private helper method to initialize the visited list. They
+	 * are all initialized to false by default.
+	 */
+	private void initVisitedList() {
+		visited = new boolean[ridemap.length];
+		for (int i = 0; i < visited.length; i++) {
+			visited[i] = false;
+		}
+	} // End of the 'initVisitedList' method
 
 } // End of the 'BFS' class
