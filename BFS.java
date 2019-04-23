@@ -19,6 +19,17 @@ public class BFS {
 		this.time = 0;
 	} // End of the Default Constructor
 
+	/**
+	 * This is the method that will find the path to the supplied
+	 * target. It will perform a breadth first search. The wait time
+	 * and ride time of each of the vertices along the path will be
+	 * ignored. Only the edge weights will be considered along the
+	 * path.
+	 * 
+	 * @param target
+	 *            - The Attraction that a path to is needed.
+	 * @return - A Fifo queue containing the path to the target.
+	 */
 	public FifoQueue getPath(Attractions target) {
 		FifoQueue que = new FifoQueue();
 
