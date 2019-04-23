@@ -38,8 +38,9 @@ public class BFS {
 	 */
 	public FifoQueue getPath(Attractions target,
 			Attractions currentPos, double remainingTime) {
-		// Initializing the queue
+		// Initializing the queue and the time variables
 		queue = new FifoQueue();
+		time = 0;
 
 		return queue;
 	} // End of the 'getPath' method
