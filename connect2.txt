@@ -1,14 +1,14 @@
 RIDENAME1	Ridename2	weight
 ENTRANCE	Cinderella Castle	8
 ENTRANCE	Walt Disney World Railroad	1
-Cinderella Castle	Astro Orbiter 5
+Cinderella Castle	Astro Orbiter	5
 Cinderella Castle	Prince Charming Regal Carrousel	3
 Cinderella Castle	The Hall of Presidents	3
-Cinderella Castle	Walt Disney World Railroad 7
+Cinderella Castle	Walt Disney World Railroad	7
 Cinderella Castle	Mickey's Philharmagic	6
 Cinderella Castle	Mad Tea Party	4
 Cinderella Castle	Swiss Family Treehouse	6
-Astro Orbiter	Buzz Lightyear's Space Ranger Spin 3
+Astro Orbiter	Buzz Lightyear's Space Ranger Spin	3
 Astro Orbiter	Monsters, Inc. Laugh Floor	3
 Astro Orbiter	Space Mountain	4
 Astro Orbiter	Walt Disney's Carousel of Progress	2

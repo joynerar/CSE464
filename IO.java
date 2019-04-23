@@ -204,11 +204,10 @@ public class IO {
 
 	// MAIN FOR TESTING
 	public static void main(String[] args) {
-		IO z = new IO("map1.txt", "user1.txt", "connect1.txt", "outputfile.txt");
+		IO z = new IO("map2.txt", "user2.txt", "connect2.txt", "outputfile.txt");
 		System.out.println(z.getTimeAllotted() / 60 + " hours");
-		HashMap<Attractions, Integer> test = z.attractionList.get("Bathroom 1").getNeighbors();
-		System.out.println(
-				z.attractionList.get("Bathroom 1").getNeighbors().get(z.attractionList.get("Thunder Mountain")));
+		HashMap<Attractions, Integer> test = z.attractionList.get("Mad Tea Party").getNeighbors();
+		System.out.println(test.get(z.attractionList.get("Dumbo the Flying Elephant")));
 	}
 
 }
