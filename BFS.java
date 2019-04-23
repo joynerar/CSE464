@@ -6,12 +6,17 @@
 public class BFS {
 
 	// Declaring instance variables
-	Attractions[][]	ridemap;
-	Attractions		target;	// obsolete
+	private Attractions[][]	ridemap;
+	private Attractions		target;						// obsolete
+	private final String	ENTRANCE	= "ENTRANCE";
+	private double			time;
 
 	// Default Constructor
 	public BFS() {
-
+		// Initializing the instance variables
+		this.ridemap = new Attractions[10][10];
+		this.target = new Attractions();
+		this.time = 0;
 	} // End of the Default Constructor
 
 	public FifoQueue getPath(Attractions target) {
