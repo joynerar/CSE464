@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * This is the class that will handle the BFS algorithm.
  * 
@@ -6,17 +8,17 @@
 public class BFS {
 
 	// Declaring instance variables
-	private Attractions[][]	ridemap;
-	private Attractions		target;						// obsolete
-	private FifoQueue		queue;
-	private final String	ENTRANCE	= "ENTRANCE";	// obsolete
-	private double			time;
-	private boolean[]		visited;
+	private ArrayList<Attractions>	ridemap;
+	private Attractions				target;						// obsolete
+	private FifoQueue				queue;
+	private final String			ENTRANCE	= "ENTRANCE";	// obsolete
+	private double					time;
+	private boolean[]				visited;
 
 	// Default Constructor
 	public BFS() {
 		// Initializing the instance variables
-		this.ridemap = new Attractions[10][10];
+		this.ridemap = new ArrayList<Attractions>();
 		this.target = new Attractions();
 		this.time = 0;
 		initVisitedList();
@@ -44,7 +46,7 @@ public class BFS {
 		queue = new FifoQueue();
 		time = 0;
 
-		for (int i = 0; i < ridemap.length; i++) {
+		for (int i = 0; i < ridemap.size(); i++) {
 
 		}
 
@@ -64,7 +66,7 @@ public class BFS {
 	 *         would take to get from the current Attractions object,
 	 *         to the exit. Otherwise it will return false.
 	 */
-	public boolean checkTime(int remainingTime) {
+	public boolean checkTime(int remainingTime) {////////// incomplete
 		boolean result = false;
 		return result;
 	} // End of the 'checkTime' method
@@ -74,9 +76,8 @@ public class BFS {
 	 * are all initialized to false by default.
 	 */
 	private void initVisitedList() {
-		visited = new boolean[ridemap.length];
 		for (int i = 0; i < visited.length; i++) {
-			visited[i] = false;
+			ridemap.get(i).resetVisited();
 		}
 	} // End of the 'initVisitedList' method
 
