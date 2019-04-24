@@ -14,8 +14,9 @@ public class BFS {
 
 	} // End of the Default Constructor
 
-	public FifoQueue getPath(Attractions target) {
-		FifoQueue que = new FifoQueue();
+	public Queue getPath(Attractions target) {
+		// FifoQueue que = new FifoQueue();
+		Queue que = new Queue();
 
 		return que;
 	} // End of the 'getPath' method
