@@ -53,8 +53,12 @@ public class BFS {
 
 		Attractions[] path = new Attractions[ridemap.size()];
 
-		queue.add(target);
-		markVisited(target);
+		// queue.add(target);
+		// markVisited(target);
+		queue.add(currentPos);
+		markVisited(currentPos);
+
+		boolean isDone = false;
 
 		int index = 0;
 
@@ -62,12 +66,22 @@ public class BFS {
 			path[index] = queue.poll();
 			ArrayList<Neighbor> n = ridemap.get(index).getNeighbors();
 			for (int i = 0; i < n.size(); i++) {
+				if (isDone) {
+					break;
+				}
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
 					visited[s] = true;
 					queue.add(ridemap.get(s));
+					// System.out.println("pre");
+					// System.out.println(
+					// "current:\t" + ridemap.get(i).getName());
+					// System.out
+					// .println("target:\t" + target.getName());
 					if (ridemap.get(s).equals(target)) {
+						System.out.println("made it here");
 						path[s] = ridemap.get(s);
+						isDone = true;//
 						break;
 					}
 				}
