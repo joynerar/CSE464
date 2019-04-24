@@ -9,6 +9,8 @@ public class BFS {
 	Attractions[][]	ridemap;
 	Attractions		target;	// obsolete
 
+	boolean[] visited;
+
 	// Default Constructor
 	public BFS() {
 
@@ -17,7 +19,39 @@ public class BFS {
 	public Queue getPath(Attractions target) {
 		// FifoQueue que = new FifoQueue();
 		Queue que = new Queue();
+		///////
+		// Initializing the queue and the time variables
 
+		time = 0;
+		// int startingPoint = getStartingPointIndex(currentPos);
+		// int index = getStartingPointIndex(currentPos);
+		Attractions[] path = new Attractions[ridemap.size()];
+
+		que.enqueue(target);
+		markVisited(target);
+
+		int index = 0;
+
+		while (que.getSize() > 0) {
+			path[index] = que.dequeue();
+			for (int i = 0; i < ridemap.get(index).getNeighbors()
+					.size(); i++) {
+				if (!ridemap.get(i + index).isVisited()) {
+					ridemap.get(i + index).setVisited(true);
+					queue.enqueue(ridemap.get(index + i));
+					if (ridemap.get(index + i).equals(target)) {
+						break;
+					}
+				}
+			}
+
+			index++;
+		}
+
+		// return queue;
+		return path;
+
+		///////
 		return que;
 	} // End of the 'getPath' method
 
