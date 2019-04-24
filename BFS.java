@@ -61,8 +61,8 @@ public class BFS {
 			path[index] = queue.poll();
 			for (int i = 0; i < ridemap.get(index).getNeighbors()
 					.size(); i++) {
-				if (!ridemap.get(i + index).isVisited()) {
-					ridemap.get(i + index).setVisited(true);
+				if (!isVisited(i + index)) {
+					visited[i + index] = true;
 					queue.add(ridemap.get(index + i));
 					if (ridemap.get(index + i).equals(target)) {
 						break;
@@ -128,7 +128,7 @@ public class BFS {
 			int min = neighbors.get(index).getEdgeWeight();
 
 			for (int i = 1; i < neighbors.size(); i++) {
-				if (!(neighbors.get(i).getNeighbor().isVisited())) {
+				if (!isVisited(i)) {
 					if (neighbors.get(i).getEdgeWeight() < min) {
 						min = neighbors.get(i).getEdgeWeight();
 						index = i;
@@ -163,9 +163,13 @@ public class BFS {
 
 		for (int i = 0; i < ridemap.size(); i++) {
 			if (ridemap.get(i).equals(current)) {
-				ridemap.get(i).setVisited(true);
+				visited[i] = true;
 			}
 		}
+	}
+
+	private boolean isVisited(int index) {
+		return visited[index];
 	}
 
 } // End of the 'BFS' class
