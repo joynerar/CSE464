@@ -52,25 +52,38 @@ public class BFS {
 
 		Attractions[] path = new Attractions[ridemap.size()];
 
-		queue.add(target);
-		markVisited(target);
+		// queue.add(target);
+		// markVisited(target);
+		//
+		// int index = 0;
 
-		int index = 0;
+		// while (!queue.isEmpty()) {
+		// path[index] = queue.poll();
+		// for (int i = 0; i < ridemap.get(index).getNeighbors()
+		// .size(); i++) {
+		// if (!isVisited(i + index)) {
+		// visited[i + index] = true;
+		// queue.add(ridemap.get(index + i));
+		// if (ridemap.get(index + i).equals(target)) {
+		// path[index] = ridemap.get(index + i);
+		// break;
+		// }
+		// }
+		// }
+		//
+		// index++;
+		// }
 
-		while (!queue.isEmpty()) {
-			path[index] = queue.poll();
-			for (int i = 0; i < ridemap.get(index).getNeighbors()
-					.size(); i++) {
-				if (!isVisited(i + index)) {
-					visited[i + index] = true;
-					queue.add(ridemap.get(index + i));
-					if (ridemap.get(index + i).equals(target)) {
-						break;
-					}
-				}
+		int pos = getStartingPointIndex(target);
+
+		for (int i = 0; i < ridemap.size(); i++) {
+			if (i == 0) {
+				path[i] = ridemap.get(pos);
+			} else {
+				pos = extractMin(ridemap.get(i).getNeighbors());
+				path[i] = ridemap.get(pos);
 			}
 
-			index++;
 		}
 
 		// return queue;

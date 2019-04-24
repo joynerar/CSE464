@@ -38,6 +38,8 @@ public class TestBfs {
 		attraction1.addNeighbor(attraction3, 2);
 		attraction1.addNeighbor(attraction4, 3);
 
+		attraction2.addNeighbor(attraction5, 4);
+
 		map.add(attraction1);
 		map.add(attraction2);
 		map.add(attraction3);

@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * @author Josh Overbeck
@@ -10,7 +10,8 @@ public class Attractions {
 	private int		waitTime;
 	private int		rideTime;
 
-	private HashMap<Attractions, Integer> neighbors;
+	// private HashMap<Attractions, Integer> neighbors;
+	private ArrayList<Neighbor> neighbors;
 
 	// Default constructor
 	public Attractions() {
@@ -18,7 +19,7 @@ public class Attractions {
 		this.name = "";
 		this.waitTime = -99999; // Using negative to represent null;
 		this.rideTime = -99999;
-		neighbors = new HashMap<Attractions, Integer>();
+		neighbors = new ArrayList<Neighbor>();
 	} // End of the default constructor
 
 	/**
@@ -34,7 +35,7 @@ public class Attractions {
 		this.name = name;
 		this.waitTime = waitTime;
 		this.rideTime = rideTime;
-		neighbors = new HashMap<Attractions, Integer>();
+		neighbors = new ArrayList<Neighbor>();
 	} // End of workhourse constructor
 
 	// ******************* Getters **********************************
@@ -72,7 +73,7 @@ public class Attractions {
 	 * 
 	 * @return - The HashMap containing the neighbors.
 	 */
-	public HashMap<Attractions, Integer> getNeighbors() {
+	public ArrayList<Neighbor> getNeighbors() {
 		return neighbors;
 	} // End of the 'getNeighbors' method
 
@@ -122,7 +123,10 @@ public class Attractions {
 	 *            objects.
 	 */
 	public void addNeighbor(Attractions neighbor, int edgeWeight) {
-		neighbors.put(neighbor, edgeWeight);
+		Neighbor newNeighbor = new Neighbor();
+		newNeighbor.setEdgeWeight(edgeWeight);
+		newNeighbor.setNeighbor(neighbor);
+		neighbors.add(newNeighbor);
 	} // End of the 'addNeighbor' method
 
 } // End of the 'Attractions' class
