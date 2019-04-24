@@ -65,7 +65,9 @@ public class TestBfs {
 		Attractions[] one = bfs.getPath(attraction1, attraction5, 28);
 
 		for (int o = 0; o < one.length; o++) {
-			System.out.println(one[o].getName());
+			if (one[o] != null) {
+				System.out.println(one[o].getName());
+			}
 		}
 
 	}
