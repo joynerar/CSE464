@@ -61,9 +61,8 @@ public class BFS {
 			path[index] = queue.poll();
 			ArrayList<Neighbor> n = ridemap.get(index).getNeighbors();
 			for (int i = 0; i < n.size(); i++) {
-				if (!isVisited(i + index)) {
-					int s = getStartingPointIndex(
-							n.get(i).getNeighbor());
+				int s = getStartingPointIndex(n.get(i).getNeighbor());
+				if (visited[s] == false) {
 					visited[s] = true;
 					queue.add(ridemap.get(s));
 					// if (ridemap.get(index + i).equals(target)) {

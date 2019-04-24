@@ -34,8 +34,8 @@ public class TestBfs {
 		attraction5.setRideTime(2);
 
 		attraction1.addNeighbor(attraction2, 1);
-		attraction1.addNeighbor(attraction3, 2);
-		attraction1.addNeighbor(attraction4, 3);
+		attraction1.addNeighbor(attraction3, 3);
+		attraction1.addNeighbor(attraction4, 2);
 
 		attraction2.addNeighbor(attraction5, 4);
 
