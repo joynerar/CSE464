@@ -10,18 +10,18 @@ import java.util.Queue;
 public class BFS {
 
 	// Declaring instance variables
-	private ArrayList<Attractions>	ridemap;
-	private Attractions				target;						// obsolete
-	private FifoQueue				queue;						// obsolete
-	private final String			ENTRANCE	= "ENTRANCE";	// obsolete
-	private double					time;
-	private boolean[]				visited;
+	private ArrayList<Attractions> ridemap;
+	// private Attractions target; // obsolete
+	// private FifoQueue queue; // obsolete
+	// private final String ENTRANCE = "ENTRANCE"; // obsolete
+	private double		time;
+	private boolean[]	visited;
 
 	// Default Constructor
 	public BFS(ArrayList<Attractions> map) {
 		// Initializing the instance variables
 		this.ridemap = map;
-		this.target = new Attractions();
+		// this.target = new Attractions();
 		this.time = 0;
 		initVisitedList();
 	} // End of the Default Constructor
