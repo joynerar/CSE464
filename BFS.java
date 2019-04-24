@@ -59,11 +59,13 @@ public class BFS {
 
 		while (!queue.isEmpty()) {
 			path[index] = queue.poll();
-			for (int i = 0; i < ridemap.get(index).getNeighbors()
-					.size(); i++) {
+			ArrayList<Neighbor> n = ridemap.get(index).getNeighbors();
+			for (int i = 0; i < n.size(); i++) {
 				if (!isVisited(i + index)) {
-					visited[i + index] = true;
-					queue.add(ridemap.get(index + i));
+					int s = getStartingPointIndex(
+							n.get(i).getNeighbor());
+					visited[s] = true;
+					queue.add(ridemap.get(s));
 					// if (ridemap.get(index + i).equals(target)) {
 					// path[index] = ridemap.get(index + i);
 					// break;
