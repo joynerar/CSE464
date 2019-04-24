@@ -90,31 +90,6 @@ public class BFS {
 			index++;
 		}
 
-		// initVisitedList();
-		//
-		// int pos = getStartingPointIndex(target);
-		//
-		// for (int i = 0; i < ridemap.size(); i++) {
-		// if (i == 0) {
-		// path[i] = ridemap.get(pos);
-		// } else {
-		// pos = extractMin(path[i - 1].getNeighbors());
-		// if (pos >= 0) {
-		// if (!visited[pos]) {
-		// path[i] = ridemap.get(pos);
-		// } else {
-		// System.out.println(pos);
-		// }
-		//
-		// }
-		//
-		// }
-		//
-		// visited[pos] = true;
-		//
-		// }
-
-		// return queue;
 		return path;
 	} // End of the 'getPath' method
 
