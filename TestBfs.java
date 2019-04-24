@@ -7,7 +7,6 @@ public class TestBfs {
 
 		ArrayList<Attractions> map = new ArrayList<Attractions>();
 
-		System.out.println("why");
 		Attractions attraction1 = new Attractions();
 		Attractions attraction2 = new Attractions();
 		Attractions attraction3 = new Attractions();
