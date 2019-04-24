@@ -63,7 +63,7 @@ public class TestBfs {
 		// System.out.println(output);
 		// }
 		BFS bfs = new BFS(map);
-		Attractions[] one = bfs.getPath(attraction1, attraction5, 28);
+		Attractions[] one = bfs.getPath(attraction1, attraction3, 28);
 
 		for (int o = 0; o < one.length; o++) {
 			if (one[o] != null) {

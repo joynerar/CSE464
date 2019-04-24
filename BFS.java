@@ -46,6 +46,7 @@ public class BFS {
 			Attractions currentPos, double remainingTime) {
 		// Initializing the queue and the time variables
 
+		initVisitedList();
 		Queue<Attractions> queue = new LinkedList<Attractions>();
 
 		time = 0;
@@ -65,10 +66,10 @@ public class BFS {
 				if (visited[s] == false) {
 					visited[s] = true;
 					queue.add(ridemap.get(s));
-					// if (ridemap.get(index + i).equals(target)) {
-					// path[index] = ridemap.get(index + i);
-					// break;
-					// }
+					if (ridemap.get(s).equals(target)) {
+						path[s] = ridemap.get(s);
+						break;
+					}
 				}
 			}
 
