@@ -12,7 +12,7 @@ public class BFS {
 	// Declaring instance variables
 	private ArrayList<Attractions>	ridemap;
 	private Attractions				target;						// obsolete
-	private FifoQueue				queue;
+	private FifoQueue				queue;						// obsolete
 	private final String			ENTRANCE	= "ENTRANCE";	// obsolete
 	private double					time;
 	private boolean[]				visited;
@@ -102,9 +102,13 @@ public class BFS {
 	private void initVisitedList() {
 		visited = new boolean[ridemap.size()];
 		for (int i = 0; i < visited.length; i++) {
-			ridemap.get(i).resetVisited();
+			visited[i] = false;
 		}
 	} // End of the 'initVisitedList' method
+
+	private void resetVisitedList() {
+		initVisitedList();
+	}
 
 	/**
 	 * This is the method that will return the index of the neighbor
