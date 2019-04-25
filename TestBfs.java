@@ -63,11 +63,12 @@ public class TestBfs {
 		// System.out.println(output);
 		// }
 		BFS bfs = new BFS(map);
-		Attractions[] one = bfs.getPath(attraction5, attraction1, 28);
+		ArrayList<Attractions> one = bfs.getPath(attraction5,
+				attraction1);
 
-		for (int o = 0; o < one.length; o++) {
-			if (one[o] != null) {
-				System.out.println(one[o].getName());
+		for (int o = 0; o < one.size(); o++) {
+			if (one.get(o) != null) {
+				System.out.println(one.get(o).getName());
 			}
 		}
 

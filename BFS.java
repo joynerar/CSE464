@@ -14,36 +14,32 @@ public class BFS {
 	// private Attractions target; // obsolete
 	// private FifoQueue queue; // obsolete
 	// private final String ENTRANCE = "ENTRANCE"; // obsolete
-	private double		time;
+	private int			time;
 	private boolean[]	visited;
 
 	// Default Constructor
 	public BFS(ArrayList<Attractions> map) {
 		// Initializing the instance variables
 		this.ridemap = map;
-		// this.target = new Attractions();
 		this.time = 0;
 		initVisitedList();
 	} // End of the Default Constructor
 
 	/**
-	 * This is the method that will find the path to the supplied
-	 * target. It will perform a breadth first search. The wait time
-	 * and ride time of each of the vertices along the path will be
-	 * ignored. Only the edge weights will be considered along the
-	 * path.
+	 * This is the method that will get the path to the desired
+	 * Attraction. It requires the target and the starting point.
 	 * 
 	 * @param target
-	 *            - The Attraction that you are looking for.
+	 *            - The desired ride that the user would like to visit
+	 *            next.
 	 * @param currentPos
-	 *            - The Attractions that you are currently at.
-	 * @param remainingTime
-	 *            - The amount of time that you have remaining.
-	 * @return - The fifo queue containing the path to the target
-	 *         Attraction.
+	 *            - The starting point of where the user is at
+	 *            currently.
+	 * @return - The path to the target in the form of an array list
+	 *         of Attractions.
 	 */
-	public Attractions[] getPath(Attractions target,
-			Attractions currentPos, double remainingTime) {
+	public ArrayList<Attractions> getPath(Attractions target,
+			Attractions currentPos) {
 		// Initializing the queue and the time variables
 
 		initVisitedList();
@@ -51,7 +47,8 @@ public class BFS {
 
 		time = 0;
 
-		Attractions[] path = new Attractions[ridemap.size()];
+		// Attractions[] path = new Attractions[ridemap.size()];
+		ArrayList<Attractions> path = new ArrayList<Attractions>();
 
 		// queue.add(target);
 		// markVisited(target);
@@ -59,33 +56,33 @@ public class BFS {
 		markVisited(currentPos);
 
 		boolean isDone = false;
-
+		time = 0; // reset time
 		int index = 0;
 
 		while (!queue.isEmpty()) {
 			if (isDone) {
 				break;
 			}
-			path[index] = queue.poll();
+			path.add(queue.poll());
 			ArrayList<Neighbor> n = ridemap.get(index).getNeighbors();
 			for (int i = 0; i < n.size(); i++) {
-
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
 					visited[s] = true;
 					if (!ridemap.get(s).getNeighbors().isEmpty()) {
 						// has neighbors
 						queue.add(ridemap.get(s));
+						// concat time
+						time += n.get(i).getEdgeWeight();
+						System.out.println("Tiem:\t" + time);
 					}
-					// System.out.println("pre");
-					// System.out.println(
-					// "current:\t" + ridemap.get(i).getName());
-					// System.out
-					// .println("target:\t" + target.getName());
 					if (ridemap.get(s).equals(target)) {
 						System.out.println("made it here");
-						path[s] = ridemap.get(s);
+						path.add(ridemap.get(s));
 						isDone = true;//
+						// concat time
+						time += n.get(i).getEdgeWeight();
+						System.out.println("Tiem:\t" + time);
 						break;
 					}
 				}
@@ -96,24 +93,6 @@ public class BFS {
 
 		return path;
 	} // End of the 'getPath' method
-
-	/**
-	 * This is the method that will check to see if there is enough
-	 * time left to go to the next Destination. It will return true if
-	 * and only if there is enough time to visit the next destination
-	 * and make it to the exit. Otherwise, it will return false.
-	 * 
-	 * @param remainingTime
-	 *            - Input of the the amount of time remaining.
-	 * @return - True if and only if the amount of remaining time is
-	 *         greater than or equal to the amount of time that it
-	 *         would take to get from the current Attractions object,
-	 *         to the exit. Otherwise it will return false.
-	 */
-	public boolean checkTime(int remainingTime) {////////// incomplete
-		boolean result = false;
-		return result;
-	} // End of the 'checkTime' method
 
 	/**
 	 * A private helper method to initialize the visited list. They
@@ -193,5 +172,16 @@ public class BFS {
 	private boolean isVisited(int index) {
 		return visited[index];
 	}
+
+	/**
+	 * This is the method for getting the time. It must be called
+	 * after running the 'getPath' method.
+	 * 
+	 * @return The time it takes to travel from the start point to the
+	 *         end point.
+	 */
+	public int getTime() {
+		return time;
+	} // End of the 'getTime' method
 
 } // End of the 'BFS' class
