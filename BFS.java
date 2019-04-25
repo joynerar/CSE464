@@ -59,7 +59,7 @@ public class BFS {
 			if (isDone) {
 				break;
 			}
-			// path.add(queue.poll());
+			path.add(queue.poll());
 			ArrayList<Neighbor> n = ridemap.get(index).getNeighbors();
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
@@ -86,7 +86,7 @@ public class BFS {
 					}
 				}
 			}
-			path.add(queue.poll());
+			// path.add(queue.poll());
 			index++;
 		}
 
