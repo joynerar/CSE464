@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Driver {
 
@@ -15,7 +17,7 @@ public class Driver {
 	public static void main(String[] args) {
 		IO inout = new IO("map1.txt", "user1.txt", "connect1.txt", "outputfile.txt");
 		// Walking directions though the park
-		FifoQueue route = new FifoQueue();
+		Queue<Attractions> route = new LinkedList<Attractions>();
 		// Total time a user wants to stay at park
 		int timeAllotted = inout.getTimeAllotted();
 		// Running total of time as the schedule is built
@@ -30,11 +32,13 @@ public class Driver {
 		// Current position for creating schedule
 		Attractions currentPosition = parkMap.get("ENTRANCE");
 		int rideCounter = 0; // L
-		BFS bfs = new BFS();
+		BFS bfs = new BFS(new ArrayList<Attractions>(parkMap.values()));
 		Attractions dest = null;
+		int remainingTime = 0;
 		while (!currentPosition.getName().equals("ENTRANCE")) {
+			remainingTime = timeAllotted - totalTime;
 			// Checks if all user prefs have been done yet and theres enough time
-			if (bfs.checkTime(timeAllotted - totalTime)) {
+			if (bfs.checkTime(remainingTime)) {
 				if (rideCounter < userDestinations.size())
 					dest = parkMap.get(userDestinations.get(mapKeys.get(rideCounter)));
 				else
@@ -43,10 +47,11 @@ public class Driver {
 				dest = parkMap.get("ENTRANCE");
 			}
 
-			FifoQueue tmp = bfs.getPath(dest);
-			while (tmp.getSize() > 0) {
-				route.enqueue(tmp.dequeue());
-			}
+			ArrayList<Attractions> tmp = bfs.getPath(dest, currentPosition, remainingTime);
+
+			for (int i = 1; i < tmp.size(); i++)
+				route.add(tmp.get(i));
+
 			currentPosition = dest;
 			rideCounter++;
 		}
