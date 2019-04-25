@@ -126,7 +126,6 @@ public class IO {
 			// Wires in connections
 			a1.addNeighbor(a2, weight);
 			a2.addNeighbor(a1, weight);
-			System.out.println(a1.getNeighbors().toString());
 
 		}
 		connect.close(); // Closes Scanner
@@ -206,8 +205,7 @@ public class IO {
 	public static void main(String[] args) {
 		IO z = new IO("map2.txt", "user2.txt", "connect2.txt", "outputfile.txt");
 		System.out.println(z.getTimeAllotted() / 60 + " hours");
-		HashMap<Attractions, Integer> test = z.attractionList.get("Mad Tea Party").getNeighbors();
-		System.out.println(test.get(z.attractionList.get("Dumbo the Flying Elephant")));
+		ArrayList<Neighbor> test = z.attractionList.get("Mad Tea Party").getNeighbors();
 	}
 
 }

@@ -1,11 +1,24 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Driver {
+	static BFS bfs;
 
-	private static boolean hasTime() {
+	private static ArrayList<Attractions> checkRouteToDest(Attractions current, Attractions destination,
+			int timeRemaining, BFS bfs) {
+		ArrayList<Attractions> routeToNext = bfs.getPath(destination, current);
+		int routeToNextTime = bfs.getTime();
 
-		return false;
+		if (routeToNextTime < timeRemaining) {
+			bfs.getPath(destination, bfs.ridemap.get(0));
+			int timeToExit = bfs.getTime();
+			if (routeToNextTime + timeToExit < timeRemaining) {
+				return routeToNext;
+			}
+		}
+		return new ArrayList<Attractions>();
 	}
 
 	private static Attractions getSmallestNeighbor() {
@@ -15,7 +28,7 @@ public class Driver {
 	public static void main(String[] args) {
 		IO inout = new IO("map1.txt", "user1.txt", "connect1.txt", "outputfile.txt");
 		// Walking directions though the park
-		FifoQueue route = new FifoQueue();
+		Queue<Attractions> route = new LinkedList<Attractions>();
 		// Total time a user wants to stay at park
 		int timeAllotted = inout.getTimeAllotted();
 		// Running total of time as the schedule is built
@@ -30,23 +43,35 @@ public class Driver {
 		// Current position for creating schedule
 		Attractions currentPosition = parkMap.get("ENTRANCE");
 		int rideCounter = 0; // L
-		BFS bfs = new BFS();
+		bfs = new BFS(new ArrayList<Attractions>(parkMap.values()));
 		Attractions dest = null;
+		int remainingTime = 0;
 		while (!currentPosition.getName().equals("ENTRANCE")) {
+
+			remainingTime = timeAllotted - totalTime;
+
 			// Checks if all user prefs have been done yet and theres enough time
-			if (bfs.checkTime(timeAllotted - totalTime)) {
-				if (rideCounter < userDestinations.size())
-					dest = parkMap.get(userDestinations.get(mapKeys.get(rideCounter)));
-				else
-					dest = getSmallestNeighbor();
+			/*
+			 * if (hasTime()) { if (rideCounter < userDestinations.size()) dest =
+			 * parkMap.get(userDestinations.get(mapKeys.get(rideCounter))); else dest =
+			 * getSmallestNeighbor(); } else { dest = parkMap.get("ENTRANCE"); }
+			 */
+
+			if (rideCounter < userDestinations.size()) {
+				dest = parkMap.get(userDestinations.get(mapKeys.get(rideCounter)));
 			} else {
+				dest = getSmallestNeighbor();
+			}
+			ArrayList<Attractions> routeToDest = checkRouteToDest(currentPosition, dest, remainingTime, bfs);
+			if (routeToDest.size() == 0) {
 				dest = parkMap.get("ENTRANCE");
+				bfs.getPath(currentPosition, bfs.ridemap.get(0));
 			}
 
-			FifoQueue tmp = bfs.getPath(dest);
-			while (tmp.getSize() > 0) {
-				route.enqueue(tmp.dequeue());
-			}
+			for (int i = 1; i < routeToDest.size(); i++)
+				route.add(routeToDest.get(i));
+
+			totalTime += bfs.getTime();
 			currentPosition = dest;
 			rideCounter++;
 		}
