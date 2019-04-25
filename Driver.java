@@ -39,7 +39,7 @@ public class Driver {
 	}
 
 	public static void main(String[] args) {
-		IO inout = new IO("map1.txt", "user1.txt", "connect1.txt", "outputfile.txt");
+		IO inout = new IO("map2.txt", "user2.txt", "connect2.txt", "outputfile.txt");
 		// Walking directions though the park
 		Queue<Attractions> route = new LinkedList<Attractions>();
 		// Total time a user wants to stay at park
@@ -59,6 +59,40 @@ public class Driver {
 		bfs = new BFS(new ArrayList<Attractions>(parkMap.values()));
 		Attractions dest = null;
 		int remainingTime = 0;
+
+		ArrayList<Attractions> map = new ArrayList<Attractions>(parkMap.values());
+		map.sort(Comparator.comparing(Attractions::getName));
+
+		for (int i = 0; i < map.size(); i++) {
+			String output = new String();
+			output = "";
+
+			output += "name: " + map.get(i).getName();
+			output += "\twaitTime: " + map.get(i).getWaitTime();
+			output += "\trideTime: " + map.get(i).getRideTime();
+			output += "\nNeighbors: ";
+			ArrayList<Neighbor> neighbors = map.get(i).getNeighbors();
+			for (int n = 0; n < neighbors.size(); n++) {
+				output += "\t" + neighbors.get(n).getNeighbor().getName();
+			}
+			output += "\n";
+			System.out.println(output);
+
+		}
+
+		/////
+
+		ArrayList<Attractions> one = bfs.getPath(parkMap.get("Monsters, Inc. Laugh Floor"),
+				parkMap.get("Space Mountain"));
+
+		for (int o = 0; o < one.size(); o++) {
+			if (one.get(o) != null) {
+				System.out.println(one.get(o).getName());
+
+			}
+		}
+		////
+
 		while (!currentPosition.getName().equals("ENTRANCE")) {
 
 			remainingTime = timeAllotted - totalTime;
@@ -88,5 +122,6 @@ public class Driver {
 			currentPosition = dest;
 			rideCounter++;
 		}
+
 	}
 }
