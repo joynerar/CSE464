@@ -41,7 +41,6 @@ public class BFS {
 	public ArrayList<Attractions> getPath(Attractions target,
 			Attractions currentPos) {
 		// Initializing the queue and the time variables
-
 		initVisitedList();
 		Queue<Attractions> queue = new LinkedList<Attractions>();
 
@@ -50,8 +49,6 @@ public class BFS {
 		// Attractions[] path = new Attractions[ridemap.size()];
 		ArrayList<Attractions> path = new ArrayList<Attractions>();
 
-		// queue.add(target);
-		// markVisited(target);
 		queue.add(currentPos);
 		markVisited(currentPos);
 
@@ -87,10 +84,8 @@ public class BFS {
 					}
 				}
 			}
-			// path[index] = queue.poll();
 			index++;
 		}
-
 		return path;
 	} // End of the 'getPath' method
 
@@ -105,40 +100,13 @@ public class BFS {
 		}
 	} // End of the 'initVisitedList' method
 
+	/**
+	 * This is the method that will reset the states of all the items
+	 * in the visited array.
+	 */
 	private void resetVisitedList() {
 		initVisitedList();
-	}
-
-	/**
-	 * This is the method that will return the index of the neighbor
-	 * with the lowest edge weight.
-	 * 
-	 * @param neighbors
-	 *            - The list of neighbors.
-	 * @return - The index of the neighbor with the lowest edge
-	 *         weight.
-	 */
-	private int extractMin(ArrayList<Neighbor> neighbors) {
-		int index = 0;
-
-		if (neighbors.size() == 0) {
-			return -9999;
-		} else {
-			int min = neighbors.get(index).getEdgeWeight();
-
-			for (int i = 1; i < neighbors.size(); i++) {
-				if (!isVisited(i)) {
-					if (neighbors.get(i).getEdgeWeight() < min) {
-						min = neighbors.get(i).getEdgeWeight();
-						index = i;
-					}
-				}
-			}
-			index = getStartingPointIndex(
-					neighbors.get(index).getNeighbor());
-		}
-		return index;
-	} // End of the 'extractMin' method
+	} // End of the 'resetVisitedList' method
 
 	/**
 	 * This is a private helper method that will find the index of the
