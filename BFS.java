@@ -144,10 +144,6 @@ public class BFS {
 		}
 	} // End of the 'markVisited' method
 
-	private boolean isVisited(int index) {
-		return visited[index];
-	}
-
 	/**
 	 * This is the method for getting the time. It must be called
 	 * after running the 'getPath' method.
