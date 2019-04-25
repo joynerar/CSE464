@@ -128,6 +128,13 @@ public class BFS {
 		return result;
 	} // End of the 'getStartingPointIndex'method
 
+	/**
+	 * This is the method that will make a vertex as being visited.
+	 * 
+	 * @param current
+	 *            - The current location that you would like to mark
+	 *            as visited.
+	 */
 	private void markVisited(Attractions current) {
 
 		for (int i = 0; i < ridemap.size(); i++) {
@@ -135,7 +142,7 @@ public class BFS {
 				visited[i] = true;
 			}
 		}
-	}
+	} // End of the 'markVisited' method
 
 	private boolean isVisited(int index) {
 		return visited[index];
