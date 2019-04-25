@@ -71,8 +71,10 @@ public class BFS {
 						// has neighbors
 						queue.add(ridemap.get(s));
 						// concat time
-						time += n.get(i).getEdgeWeight();
-						System.out.println("Time:\t" + time);
+						if (i > 0) {
+							time += n.get(i).getEdgeWeight();
+							System.out.println("Time:\t" + time);
+						}
 					}
 					if (ridemap.get(s).equals(target)) {
 						System.out.println("bottom");
