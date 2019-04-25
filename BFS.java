@@ -66,22 +66,12 @@ public class BFS {
 				if (visited[s] == false) {
 					visited[s] = true;
 					if (!ridemap.get(s).getNeighbors().isEmpty()) {
-						System.out.println("top");
 						// has neighbors
 						queue.add(ridemap.get(s));
-						// // concat time
-						// if (i > 0) {
-						// time += n.get(i).getEdgeWeight();
-						// System.out.println("Time:\t" + time);
-						// }
 					}
 					if (ridemap.get(s).equals(target)) {
-						System.out.println("bottom");
 						path.add(ridemap.get(s));
 						isDone = true;//
-						// // concat time
-						// time += n.get(i).getEdgeWeight();
-						// System.out.println("Time:\t" + time);
 						break;
 					}
 				}
@@ -158,6 +148,7 @@ public class BFS {
 	 */
 	public int getTime() {
 
+		// loop path
 		for (int i = 0; i < path.size(); i++) {
 
 			ArrayList<Neighbor> nTmp = path.get(i).getNeighbors();
@@ -169,14 +160,13 @@ public class BFS {
 				next = path.get(i);
 			}
 
+			// loop neighbors of current index in path
 			for (int n = 0; n < nTmp.size(); n++) {
 				if (next.equals(nTmp.get(n).getNeighbor())) {
 					time += nTmp.get(n).getEdgeWeight();
 				}
 			}
 		}
-
-		System.out.println("Net Time:\t" + time);
 		return time;
 	} // End of the 'getTime' method
 
