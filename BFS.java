@@ -63,17 +63,18 @@ public class BFS {
 		int index = 0;
 
 		while (!queue.isEmpty()) {
-			// path[index] = queue.poll();
+			if (isDone) {
+				break;
+			}
+			path[index] = queue.poll();
 			ArrayList<Neighbor> n = ridemap.get(index).getNeighbors();
 			for (int i = 0; i < n.size(); i++) {
-				if (isDone) {
-					break;
-				}
+
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
 					visited[s] = true;
-					if (ridemap.get(s).getNeighbors().isEmpty()) {
-						// has no neighbors
+					if (!ridemap.get(s).getNeighbors().isEmpty()) {
+						// has neighbors
 						queue.add(ridemap.get(s));
 					}
 					// System.out.println("pre");
@@ -89,7 +90,7 @@ public class BFS {
 					}
 				}
 			}
-			path[index] = queue.poll();
+			// path[index] = queue.poll();
 			index++;
 		}
 
