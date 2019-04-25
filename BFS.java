@@ -10,7 +10,7 @@ import java.util.Queue;
 public class BFS {
 
 	// Declaring instance variables
-	private ArrayList<Attractions> ridemap;
+	public ArrayList<Attractions> ridemap;
 	// private Attractions target; // obsolete
 	// private FifoQueue queue; // obsolete
 	// private final String ENTRANCE = "ENTRANCE"; // obsolete
