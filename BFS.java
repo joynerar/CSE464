@@ -14,8 +14,9 @@ public class BFS {
 	// private Attractions target; // obsolete
 	// private FifoQueue queue; // obsolete
 	// private final String ENTRANCE = "ENTRANCE"; // obsolete
-	private int			time;
-	private boolean[]	visited;
+	private int				time;
+	private boolean[]		visited;
+	ArrayList<Attractions>	path;
 
 	// Default Constructor
 	public BFS(ArrayList<Attractions> map) {
@@ -45,9 +46,7 @@ public class BFS {
 		Queue<Attractions> queue = new LinkedList<Attractions>();
 
 		time = 0;
-
-		// Attractions[] path = new Attractions[ridemap.size()];
-		ArrayList<Attractions> path = new ArrayList<Attractions>();
+		path = new ArrayList<Attractions>();
 
 		queue.add(currentPos);
 		markVisited(currentPos);
@@ -60,7 +59,7 @@ public class BFS {
 			if (isDone) {
 				break;
 			}
-			// path.add(queue.poll());
+			path.add(queue.poll());
 			ArrayList<Neighbor> n = ridemap.get(index).getNeighbors();
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
@@ -70,26 +69,28 @@ public class BFS {
 						System.out.println("top");
 						// has neighbors
 						queue.add(ridemap.get(s));
-						// concat time
-						time += n.get(i).getEdgeWeight();
-						System.out.println("Time:\t" + time);
+						// // concat time
+						// if (i > 0) {
+						// time += n.get(i).getEdgeWeight();
+						// System.out.println("Time:\t" + time);
+						// }
 					}
 					if (ridemap.get(s).equals(target)) {
 						System.out.println("bottom");
 						path.add(ridemap.get(s));
 						isDone = true;//
-						// concat time
-						time += n.get(i).getEdgeWeight();
-						System.out.println("Time:\t" + time);
+						// // concat time
+						// time += n.get(i).getEdgeWeight();
+						// System.out.println("Time:\t" + time);
 						break;
 					}
 				}
 			}
-			path.add(queue.poll());
+			// path.add(queue.poll());
 			index++;
 		}
 
-		System.out.println("Net Time:\t" + time);
+		getTime();
 		return path;
 	} // End of the 'getPath' method
 
@@ -156,6 +157,26 @@ public class BFS {
 	 *         end point.
 	 */
 	public int getTime() {
+
+		for (int i = 0; i < path.size(); i++) {
+
+			ArrayList<Neighbor> nTmp = path.get(i).getNeighbors();
+			Attractions next;
+
+			if (i < path.size() - 1) {
+				next = path.get(i + 1);
+			} else {
+				next = path.get(i);
+			}
+
+			for (int n = 0; n < nTmp.size(); n++) {
+				if (next.equals(nTmp.get(n).getNeighbor())) {
+					time += nTmp.get(n).getEdgeWeight();
+				}
+			}
+		}
+
+		System.out.println("Net Time:\t" + time);
 		return time;
 	} // End of the 'getTime' method
 
