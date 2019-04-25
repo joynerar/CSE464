@@ -60,32 +60,36 @@ public class BFS {
 			if (isDone) {
 				break;
 			}
-			path.add(queue.poll());
+			// path.add(queue.poll());
 			ArrayList<Neighbor> n = ridemap.get(index).getNeighbors();
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
 					visited[s] = true;
 					if (!ridemap.get(s).getNeighbors().isEmpty()) {
+						System.out.println("top");
 						// has neighbors
 						queue.add(ridemap.get(s));
 						// concat time
 						time += n.get(i).getEdgeWeight();
-						System.out.println("Tiem:\t" + time);
+						System.out.println("Time:\t" + time);
 					}
 					if (ridemap.get(s).equals(target)) {
-						System.out.println("made it here");
+						System.out.println("bottom");
 						path.add(ridemap.get(s));
 						isDone = true;//
 						// concat time
 						time += n.get(i).getEdgeWeight();
-						System.out.println("Tiem:\t" + time);
+						System.out.println("Time:\t" + time);
 						break;
 					}
 				}
 			}
+			path.add(queue.poll());
 			index++;
 		}
+
+		System.out.println("Net Time:\t" + time);
 		return path;
 	} // End of the 'getPath' method
 

@@ -37,7 +37,10 @@ public class TestBfs {
 		attraction1.addNeighbor(attraction3, 3);
 		attraction1.addNeighbor(attraction4, 2);
 
+		attraction2.addNeighbor(attraction1, 1);
 		attraction2.addNeighbor(attraction5, 4);
+
+		attraction5.addNeighbor(attraction2, 4);
 
 		map.add(attraction1);
 		map.add(attraction2);
@@ -63,7 +66,7 @@ public class TestBfs {
 		// System.out.println(output);
 		// }
 		BFS bfs = new BFS(map);
-		ArrayList<Attractions> one = bfs.getPath(attraction5,
+		ArrayList<Attractions> one = bfs.getPath(attraction4,
 				attraction1);
 
 		for (int o = 0; o < one.size(); o++) {
