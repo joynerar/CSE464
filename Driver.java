@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -21,8 +22,20 @@ public class Driver {
 		return new ArrayList<Attractions>();
 	}
 
-	private static Attractions getSmallestNeighbor() {
-		return null;
+	private static Attractions getSmallestNeighbor(Queue<Attractions> route, Attractions currentPosition,
+			int timeRemaining) {
+		ArrayList<Neighbor> currentNeighbors = currentPosition.getNeighbors();
+		ArrayList<Attractions> restOfMap = bfs.ridemap;
+
+		// Gets intersection of path and map
+		for (Attractions a : route)
+			if (restOfMap.contains(a))
+				restOfMap.remove(a);
+
+		// Sort remaining attractions by waitTime
+		restOfMap.sort(Comparator.comparing(Attractions::getWaitTime));
+
+		return restOfMap.get(0);
 	}
 
 	public static void main(String[] args) {
@@ -34,7 +47,7 @@ public class Driver {
 		// Running total of time as the schedule is built
 		int totalTime = 0;
 		// list of attractions visited
-		ArrayList<Attractions> visitedAttractions;
+		ArrayList<Attractions> visitedAttractions = null;
 		// The map
 		HashMap<String, Attractions> parkMap = inout.getAttractionList();
 		HashMap<String, Attractions> userDestinations = inout.getUserPrefs();
@@ -60,7 +73,7 @@ public class Driver {
 			if (rideCounter < userDestinations.size()) {
 				dest = parkMap.get(userDestinations.get(mapKeys.get(rideCounter)));
 			} else {
-				dest = getSmallestNeighbor();
+				dest = getSmallestNeighbor(route, dest, remainingTime);
 			}
 			ArrayList<Attractions> routeToDest = checkRouteToDest(currentPosition, dest, remainingTime, bfs);
 			if (routeToDest.size() == 0) {
