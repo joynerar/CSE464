@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.PriorityQueue;
 
 /**
  * This is the class that will handle the BFS algorithm.
@@ -40,7 +39,8 @@ public class BFS {
 			Attractions currentPos) {
 		// Initializing the queue and the time variables
 		initVisitedList();
-		Queue<Attractions> queue = new LinkedList<Attractions>();
+		// Queue<Attractions> queue = new LinkedList<Attractions>();
+		PriorityQueue<Attractions> queue = new PriorityQueue<Attractions>();
 
 		time = 0;
 		path = new ArrayList<Attractions>();
