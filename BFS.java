@@ -10,13 +10,10 @@ import java.util.Queue;
 public class BFS {
 
 	// Declaring instance variables
-	public ArrayList<Attractions> ridemap;
-	// private Attractions target; // obsolete
-	// private FifoQueue queue; // obsolete
-	// private final String ENTRANCE = "ENTRANCE"; // obsolete
-	private int				time;
-	private boolean[]		visited;
-	ArrayList<Attractions>	path;
+	public ArrayList<Attractions>	ridemap;
+	private int						time;
+	private boolean[]				visited;
+	ArrayList<Attractions>			path;
 
 	// Default Constructor
 	public BFS(ArrayList<Attractions> map) {
@@ -53,6 +50,7 @@ public class BFS {
 
 		boolean isDone = false;
 		time = 0; // reset time
+		// int index = getStartingPointIndex(currentPos); //
 		int index = 0;
 
 		while (!queue.isEmpty()) {
@@ -60,15 +58,19 @@ public class BFS {
 				break;
 			}
 			path.add(queue.poll());
-			ArrayList<Neighbor> n = ridemap.get(index).getNeighbors();
+			// ArrayList<Neighbor> n =
+			// ridemap.get(index).getNeighbors();
+			ArrayList<Neighbor> n = path.get(index).getNeighbors();
+
+			///////
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
 					visited[s] = true;
-					if (!ridemap.get(s).getNeighbors().isEmpty()) {
-						// has neighbors
-						queue.add(ridemap.get(s));
-					}
+
+					// has neighbors
+					queue.add(ridemap.get(s));
+
 					if (ridemap.get(s).equals(target)) {
 						path.add(ridemap.get(s));
 						isDone = true;//
@@ -80,7 +82,7 @@ public class BFS {
 			index++;
 		}
 
-		getTime();
+		getTime(); // obsolete
 		return path;
 	} // End of the 'getPath' method
 
@@ -167,6 +169,7 @@ public class BFS {
 				}
 			}
 		}
+		System.out.println("Net Time:\t" + time);
 		return time;
 	} // End of the 'getTime' method
 
