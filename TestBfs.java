@@ -69,7 +69,7 @@ public class TestBfs {
 		// }
 		BFS bfs = new BFS(map);
 		ArrayList<Attractions> one = bfs.getPath(attraction2,
-				attraction3);
+				attraction4);
 
 		for (int o = 0; o < one.size(); o++) {
 			if (one.get(o) != null) {
