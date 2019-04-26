@@ -50,19 +50,16 @@ public class BFS {
 
 		boolean isDone = false;
 		time = 0; // reset time
-		// int index = getStartingPointIndex(currentPos); //
 		int index = 0;
 
 		while (!queue.isEmpty()) {
 			if (isDone) {
 				break;
 			}
+
 			path.add(queue.poll());
-			// ArrayList<Neighbor> n =
-			// ridemap.get(index).getNeighbors();
 			ArrayList<Neighbor> n = path.get(index).getNeighbors();
 
-			///////
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
@@ -78,11 +75,11 @@ public class BFS {
 					}
 				}
 			}
-			// path.add(queue.poll());
+			// path.add(queue.poll()); // obsolete
 			index++;
 		}
 
-		getTime(); // obsolete
+		// getTime(); // obsolete
 		return path;
 	} // End of the 'getPath' method
 
