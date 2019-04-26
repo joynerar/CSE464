@@ -33,6 +33,7 @@ public class TestBfs {
 		attraction5.setWaitTime(45);
 		attraction5.setRideTime(2);
 
+		// neighbors
 		attraction1.addNeighbor(attraction2, 1);
 		attraction1.addNeighbor(attraction3, 3);
 		attraction1.addNeighbor(attraction4, 2);
@@ -43,6 +44,8 @@ public class TestBfs {
 		attraction5.addNeighbor(attraction2, 4);
 
 		attraction3.addNeighbor(attraction1, 3);
+
+		attraction4.addNeighbor(attraction1, 2);
 
 		map.add(attraction1);
 		map.add(attraction2);
