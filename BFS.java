@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -59,6 +61,10 @@ public class BFS {
 
 			path.add(queue.poll());
 			ArrayList<Neighbor> n = path.get(index).getNeighbors();
+			// sort n
+			// Arrays.sort(n);
+			// n.sort(n);
+			Collections.sort(n);
 
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
@@ -170,4 +176,16 @@ public class BFS {
 		return time;
 	} // End of the 'getTime' method
 
+	private Queue<Neighbor> sortQ(Queue<Neighbor> input) {
+		Neighbor[] tmp = new Neighbor[input.size()];
+		for (int f = 0; f < tmp.length; f++) {
+			tmp[f] = input.poll();
+		}
+
+		Arrays.sort(tmp);
+
+		Queue<Neighbor> result = (Queue<Neighbor>) Arrays.asList(tmp);
+		return result;
+
+	}
 } // End of the 'BFS' class

@@ -44,7 +44,7 @@ public class Driver {
 	}
 
 	public static void main(String[] args) {
-		IO inout = new IO("mapJ.txt", "user2.txt", "connectJ.txt",
+		IO inout = new IO("map2.txt", "user2.txt", "connect2.txt",
 				"outputfile.txt");
 		// Walking directions though the park
 		Queue<Attractions> route = new LinkedList<Attractions>();
@@ -96,8 +96,9 @@ public class Driver {
 
 		/////
 
-		ArrayList<Attractions> one = bfs.getPath(parkMap.get("2"),
-				parkMap.get("4"));
+		ArrayList<Attractions> one = bfs.getPath(
+				parkMap.get("Mad Tea Party"),
+				parkMap.get("ENTRANCE"));
 
 		for (int o = 0; o < one.size(); o++) {
 			if (one.get(o) != null) {

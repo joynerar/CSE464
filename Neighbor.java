@@ -4,7 +4,7 @@
  * 
  * @author Josh Overbeck
  */
-public class Neighbor {
+public class Neighbor implements Comparable<Neighbor> {
 
 	private Attractions	neighbor;
 	private int			edgeWeight;
@@ -55,5 +55,17 @@ public class Neighbor {
 	public int getEdgeWeight() {
 		return this.edgeWeight;
 	} // End of the 'getEdgeWeight' method
+
+	@Override
+	public int compareTo(Neighbor o) {
+		int edgeWeightCompare = o.getEdgeWeight();
+
+		// ascending order
+		return this.edgeWeight - edgeWeightCompare;
+
+		// descending order
+		// return edgeWeightCompare - this.edgeWeight;
+
+	}
 
 } // End of the 'Neighbor' class
