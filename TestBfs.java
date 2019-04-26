@@ -47,11 +47,16 @@ public class TestBfs {
 
 		attraction4.addNeighbor(attraction1, 2);
 
-		map.add(attraction1);
-		map.add(attraction2);
-		map.add(attraction3);
-		map.add(attraction4);
+		// map.add(attraction1);
+		// map.add(attraction2);
+		// map.add(attraction3);
+		// map.add(attraction4);
+		// map.add(attraction5);
 		map.add(attraction5);
+		map.add(attraction3);
+		map.add(attraction1);
+		map.add(attraction4);
+		map.add(attraction2);
 
 		// // Sanity check
 		// for (int i = 0; i < map.size(); i++) {
