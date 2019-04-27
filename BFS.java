@@ -58,8 +58,15 @@ public class BFS {
 			if (isDone) {
 				break;
 			}
-
+			/*
+			 * I bet, that this problem could be solved if I give the 
+			 * attrations class an attribute  that would account for 
+			 * initializing it to enfinity.  Then I could sort the 
+			 * queue before pushing it to the path.  Or just change 
+			 * it to a priority queue.  
+			 */
 			path.add(queue.poll());
+
 			ArrayList<Neighbor> n = path.get(index).getNeighbors();
 			// sort n
 			// Arrays.sort(n);
