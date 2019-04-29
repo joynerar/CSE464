@@ -40,8 +40,11 @@ public class BFS {
 	 */
 	public ArrayList<Attractions> getPath(Attractions target,
 			Attractions currentPos) {
+
 		// Initializing the queue and the time variables
 		initVisitedList();
+		// Set weight of starting point to zero
+		currentPos.setVerticeWeight(0);
 		// Queue<Attractions> queue = new LinkedList<Attractions>();
 		PriorityQueue<Attractions> queue = new PriorityQueue<Attractions>();
 
@@ -98,6 +101,16 @@ public class BFS {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
 					visited[s] = true;
+
+					// Relaxing step
+					for (int j = 0; j < n.size(); j++) {
+						int updatedWeight = path.get(path.size() - 1)
+								.getVerticeWeight()
+								+ n.get(j).getEdgeWeight();
+
+						ridemap.get(s)
+								.setVerticeWeight(updatedWeight);
+					} // end of relaxation step
 
 					// has neighbors
 					queue.add(ridemap.get(s));
