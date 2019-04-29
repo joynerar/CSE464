@@ -65,9 +65,29 @@ public class BFS {
 			 * queue before pushing it to the path.  Or just change 
 			 * it to a priority queue.  
 			 */
+
+			// Attractions next = queue.poll();
+			//
+			// if (path.size() > 1) {
+			// ArrayList<Neighbor> prev = path.get(path.size() - 1)
+			// .getNeighbors();
+			// if (testNeighbors(prev, next) == false) {
+			// // System.out.println("not Neighbors");
+			// path.remove(path.size() - 1);
+			// path.add(next);
+			// } else {
+			// path.add(next);
+			// }
+			// } else {
+			// path.add(next);
+			// }
+
 			path.add(queue.poll());
 
-			ArrayList<Neighbor> n = path.get(index).getNeighbors();
+			// ArrayList<Neighbor> n = path.get(index).getNeighbors();
+			ArrayList<Neighbor> n = path.get(path.size() - 1)
+					.getNeighbors();
+
 			// sort n
 			// Arrays.sort(n);
 			// n.sort(n);
@@ -195,4 +215,23 @@ public class BFS {
 		return result;
 
 	}
+
+	private boolean neighborsConnected(ArrayList<Neighbor> neighbors,
+			Attractions nextPath) {
+		boolean result = false;
+		for (int i = 0; i < neighbors.size(); i++) {
+			if (neighbors.get(i).getNeighbor().equals(nextPath)) {
+				result = true;
+			}
+		}
+		return result;
+	}
+
+	// private void cleanPath() {
+	// ArrayList<Attractions> result = new ArrayList<Attractions>();
+	// for (int i = 1; i < path.size(); i++) {
+	// ArrayList<Neighbor> currentN = path.get(i).getNeighbors();
+	// if(neighborsConnected(currentN, ))
+	// }
+	// }
 } // End of the 'BFS' class
