@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
@@ -42,7 +42,8 @@ public class BFS {
 			Attractions currentPos) {
 		// Initializing the queue and the time variables
 		initVisitedList();
-		Queue<Attractions> queue = new LinkedList<Attractions>();
+		// Queue<Attractions> queue = new LinkedList<Attractions>();
+		PriorityQueue<Attractions> queue = new PriorityQueue<Attractions>();
 
 		time = 0;
 		path = new ArrayList<Attractions>();
