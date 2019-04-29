@@ -3,12 +3,13 @@ import java.util.ArrayList;
 /**
  * @author Josh Overbeck
  */
-public class Attractions {
+public class Attractions implements Comparable<Attractions> {
 
 	// Declaring instance variables
 	private String	name;
 	private int		waitTime;
 	private int		rideTime;
+	private int		verticeWeight;
 
 	// private HashMap<Attractions, Integer> neighbors;
 	private ArrayList<Neighbor> neighbors;
@@ -36,6 +37,7 @@ public class Attractions {
 		this.waitTime = waitTime;
 		this.rideTime = rideTime;
 		neighbors = new ArrayList<Neighbor>();
+		setVerticeWeight(); // Intializing the vertice weight.
 	} // End of workhourse constructor
 
 	// ******************* Getters **********************************
@@ -128,5 +130,44 @@ public class Attractions {
 		newNeighbor.setNeighbor(neighbor);
 		neighbors.add(newNeighbor);
 	} // End of the 'addNeighbor' method
+
+	/**
+	 * This is a private helper method for setting the vertice weight
+	 * of this Attractions object.
+	 */
+	private void setVerticeWeight() {
+		setVerticeWeight(99999); // Set the vertice weight to infinity
+	} // End of the 'setVerticeWeight' method
+
+	/**
+	 * This is the method that will set the vertice weight of this
+	 * Attractions object.
+	 * 
+	 * @param newWeight
+	 */
+	public void setVerticeWeight(int newWeight) {
+		this.verticeWeight = newWeight;
+	} // End of the 'setVerticeWeight' method
+
+	/***
+	 * This is the method for accessing the vertice Weight of this
+	 * Attractions object.
+	 * 
+	 * @return
+	 */
+	public int getVerticeWeight() {
+		return verticeWeight;
+	} // End of the 'getVerticeWeight' method
+
+	@Override
+	public int compareTo(Attractions o) {
+
+		// ascending order
+		return this.verticeWeight - o.getVerticeWeight();
+
+		// descending order
+		// return verticeWeight - o.getVerticeWeight();
+
+	} // End of the 'compareTo' method
 
 } // End of the 'Attractions' class
