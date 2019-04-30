@@ -32,6 +32,7 @@ public class BFS {
 	 * This is the method that will get the path to the desired Attraction. It
 	 * requires the target and the starting point.
 	 * 
+	 * @author Adam
 	 * @param target     - The desired ride that the user would like to visit next.
 	 * @param currentPos - The starting point of where the user is at currently.
 	 * @return - The path to the target in the form of an array list of Attractions.
@@ -41,8 +42,11 @@ public class BFS {
 	public ArrayList<Attractions> getPath(Attractions target, Attractions currentPos) {
 		// Holds shortest distances from src to target
 		int numOfNodes = ridemap.size();
+		// Holds the shortest distances from src
 		HashMap<Attractions, Integer> shortestDistances = new HashMap<Attractions, Integer>();
+		// Holds if nodes have been added
 		HashMap<Attractions, Boolean> added = new HashMap<Attractions, Boolean>();
+		// Holds the path
 		HashMap<Attractions, Attractions> parents = new HashMap<Attractions, Attractions>();
 		// Sets all distances to max and not visited
 		for (Attractions r : ridemap) {
