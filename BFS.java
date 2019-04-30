@@ -62,29 +62,6 @@ public class BFS {
 			if (isDone) {
 				break;
 			}
-			/*
-			 * I bet, that this problem could be solved if I give the 
-			 * attrations class an attribute  that would account for 
-			 * initializing it to enfinity.  Then I could sort the 
-			 * queue before pushing it to the path.  Or just change 
-			 * it to a priority queue.  
-			 */
-
-			// Attractions next = queue.poll();
-			//
-			// if (path.size() > 1) {
-			// ArrayList<Neighbor> prev = path.get(path.size() - 1)
-			// .getNeighbors();
-			// if (testNeighbors(prev, next) == false) {
-			// // System.out.println("not Neighbors");
-			// path.remove(path.size() - 1);
-			// path.add(next);
-			// } else {
-			// path.add(next);
-			// }
-			// } else {
-			// path.add(next);
-			// }
 
 			path.add(queue.poll());
 
@@ -96,6 +73,12 @@ public class BFS {
 			// Arrays.sort(n);
 			// n.sort(n);
 			Collections.sort(n);
+
+			System.out.println("start");
+			for (int t = 0; t < n.size(); t++) {
+				System.out.println(n.get(t).getEdgeWeight());
+			}
+			System.out.println("end");
 
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
