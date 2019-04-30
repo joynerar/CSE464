@@ -23,13 +23,12 @@ public class Dijkstra {
 
 		while (!q.isEmpty()) {
 
-			if (isDone) {
-				break;
-			}
-
-			ArrayList<Neighbor> neighbors = q.peek().getNeighbors();
+			Attractions processedNode = q.poll();
+			ArrayList<Neighbor> neighbors = processedNode
+					.getNeighbors();
 			for (int n = 0; n < neighbors.size(); n++) {
 
+				// Test if done
 				if (neighbors.get(n).getNeighbor().equals(target)) {
 					path.add(neighbors.get(n).getNeighbor());
 					isDone = true;
@@ -55,7 +54,12 @@ public class Dijkstra {
 				}
 			} // inner loop
 
-			path.add(q.poll());
+			// Test if done
+			if (isDone) {
+				break;
+			}
+
+			path.add(processedNode);
 
 		} // outer loop
 
