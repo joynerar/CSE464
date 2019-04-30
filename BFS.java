@@ -1,8 +1,6 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * This is the class that will handle the BFS algorithm.
@@ -74,12 +72,6 @@ public class BFS {
 			// n.sort(n);
 			Collections.sort(n);
 
-			System.out.println("start");
-			for (int t = 0; t < n.size(); t++) {
-				System.out.println(n.get(t).getEdgeWeight());
-			}
-			System.out.println("end");
-
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
@@ -108,7 +100,7 @@ public class BFS {
 			// path.add(queue.poll()); // obsolete
 			index++;
 		}
-
+		cleanPath();
 		// getTime(); // obsolete
 		return path;
 	} // End of the 'getPath' method
@@ -200,35 +192,28 @@ public class BFS {
 		return time;
 	} // End of the 'getTime' method
 
-	private Queue<Neighbor> sortQ(Queue<Neighbor> input) {
-		Neighbor[] tmp = new Neighbor[input.size()];
-		for (int f = 0; f < tmp.length; f++) {
-			tmp[f] = input.poll();
-		}
-
-		Arrays.sort(tmp);
-
-		Queue<Neighbor> result = (Queue<Neighbor>) Arrays.asList(tmp);
-		return result;
-
-	}
-
-	private boolean neighborsConnected(ArrayList<Neighbor> neighbors,
-			Attractions nextPath) {
-		boolean result = false;
-		for (int i = 0; i < neighbors.size(); i++) {
-			if (neighbors.get(i).getNeighbor().equals(nextPath)) {
-				result = true;
+	private void cleanPath() {
+		int count = path.size();
+		int index = 0;
+		for (int i = 0; i < count - 1; i++) {
+			boolean connected = false;
+			ArrayList<Neighbor> n = path.get(index).getNeighbors();
+			for (int z = 0; z < n.size(); z++) {
+				Attractions current = n.get(z).getNeighbor();
+				if (current.equals(path.get(index + 1))) {
+					connected = true;
+					break;
+				}
 			}
+			if (!connected) {
+				path.remove(index);
+				// index--;
+			} else {
+				index++;
+			}
+
 		}
-		return result;
+
 	}
 
-	// private void cleanPath() {
-	// ArrayList<Attractions> result = new ArrayList<Attractions>();
-	// for (int i = 1; i < path.size(); i++) {
-	// ArrayList<Neighbor> currentN = path.get(i).getNeighbors();
-	// if(neighborsConnected(currentN, ))
-	// }
-	// }
 } // End of the 'BFS' class
