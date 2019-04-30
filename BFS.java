@@ -70,7 +70,7 @@ public class BFS {
 			// sort n
 			// Arrays.sort(n);
 			// n.sort(n);
-			Collections.sort(n);
+			// Collections.sort(n);
 
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
@@ -83,12 +83,17 @@ public class BFS {
 								.getVerticeWeight()
 								+ n.get(j).getEdgeWeight();
 
-						ridemap.get(s)
-								.setVerticeWeight(updatedWeight);
+						// ridemap.get(s)
+						// .setVerticeWeight(updatedWeight);
+
+						n.get(j).setEdgeWeight(updatedWeight);
 					} // end of relaxation step
+
+					Collections.sort(n);
 
 					// has neighbors
 					queue.add(ridemap.get(s));
+					// queue.add(n.get(0).getNeighbor());
 
 					if (ridemap.get(s).equals(target)) {
 						path.add(ridemap.get(s));
@@ -100,7 +105,7 @@ public class BFS {
 			// path.add(queue.poll()); // obsolete
 			index++;
 		}
-		cleanPath();
+		// cleanPath();
 		// getTime(); // obsolete
 		return path;
 	} // End of the 'getPath' method
