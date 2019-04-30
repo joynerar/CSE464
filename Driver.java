@@ -73,26 +73,26 @@ public class Driver {
 				parkMap.values());
 		map.sort(Comparator.comparing(Attractions::getName));
 
-		for (int i = 0; i < map.size(); i++) {
-			String output = new String();
-			output = "";
-
-			output += "name: " + map.get(i).getName();
-			output += "\twaitTime: " + map.get(i).getWaitTime();
-			output += "\trideTime: " + map.get(i).getRideTime();
-			output += "\nNeighbors: ";
-			ArrayList<Neighbor> neighbors = map.get(i).getNeighbors();
-			for (int n = 0; n < neighbors.size(); n++) {
-				output += "\t"
-						+ neighbors.get(n).getNeighbor().getName();
-				//
-				output += "\t" + neighbors.get(n).getEdgeWeight()
-						+ "\n";
-			}
-			output += "\n";
-			System.out.println(output);
-
-		}
+		// for (int i = 0; i < map.size(); i++) {
+		// String output = new String();
+		// output = "";
+		//
+		// output += "name: " + map.get(i).getName();
+		// output += "\twaitTime: " + map.get(i).getWaitTime();
+		// output += "\trideTime: " + map.get(i).getRideTime();
+		// output += "\nNeighbors: ";
+		// ArrayList<Neighbor> neighbors = map.get(i).getNeighbors();
+		// for (int n = 0; n < neighbors.size(); n++) {
+		// output += "\t"
+		// + neighbors.get(n).getNeighbor().getName();
+		// //
+		// output += "\t" + neighbors.get(n).getEdgeWeight()
+		// + "\n";
+		// }
+		// output += "\n";
+		// System.out.println(output);
+		//
+		// }
 
 		/////
 
@@ -106,9 +106,20 @@ public class Driver {
 
 			}
 		}
+
+		System.out.println("Final Time: " + bfs.getTime());
 		////
 
 		boolean done = false;
+		int netTime = 0;
+
+		// while (!done) {
+		//
+		// // when there is, get the next user supplied destination
+		// // get the path
+		// // get the new totalTime
+		// // When there is enough time, add path to gloabal route
+		// }
 
 		while (!done) {
 

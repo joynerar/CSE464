@@ -105,7 +105,7 @@ public class BFS {
 			// path.add(queue.poll()); // obsolete
 			index++;
 		}
-		// cleanPath();
+		cleanPath();
 		// getTime(); // obsolete
 		return path;
 	} // End of the 'getPath' method
@@ -194,6 +194,11 @@ public class BFS {
 			}
 		}
 
+		// time = 0;
+		// for (int i = 0; i < path.size(); i++) {
+		// time += path.get(i).getVerticeWeight();
+		// }
+		// System.out.println("NetTime: " + time);
 		return time;
 	} // End of the 'getTime' method
 
