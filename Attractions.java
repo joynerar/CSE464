@@ -6,10 +6,11 @@ import java.util.ArrayList;
 public class Attractions implements Comparable<Attractions> {
 
 	// Declaring instance variables
-	private String	name;
-	private int		waitTime;
-	private int		rideTime;
-	private int		verticeWeight;
+	private String		name;
+	private int			waitTime;
+	private int			rideTime;
+	private int			verticeWeight;
+	private final int	INF	= 99999;
 
 	// private HashMap<Attractions, Integer> neighbors;
 	private ArrayList<Neighbor> neighbors;
@@ -136,7 +137,7 @@ public class Attractions implements Comparable<Attractions> {
 	 * of this Attractions object.
 	 */
 	private void setVerticeWeight() {
-		setVerticeWeight(99999); // Set the vertice weight to infinity
+		setVerticeWeight(INF); // Set the vertice weight to infinity
 	} // End of the 'setVerticeWeight' method
 
 	/**

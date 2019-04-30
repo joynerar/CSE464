@@ -96,7 +96,12 @@ public class Driver {
 
 		/////
 
-		ArrayList<Attractions> one = bfs.getPath(
+		// ArrayList<Attractions> one = bfs.getPath(
+		// parkMap.get("Space Mountain"),
+		// parkMap.get("ENTRANCE"));
+
+		Dijkstra dj = new Dijkstra(map);
+		ArrayList<Attractions> one = dj.getPath(
 				parkMap.get("Space Mountain"),
 				parkMap.get("ENTRANCE"));
 
