@@ -77,17 +77,17 @@ public class BFS {
 				if (visited[s] == false) {
 					visited[s] = true;
 
-					// Relaxing step
-					for (int j = 0; j < n.size(); j++) {
-						int updatedWeight = path.get(path.size() - 1)
-								.getVerticeWeight()
-								+ n.get(j).getEdgeWeight();
-
-						// ridemap.get(s)
-						// .setVerticeWeight(updatedWeight);
-
-						n.get(j).setEdgeWeight(updatedWeight);
-					} // end of relaxation step
+					// // Relaxing step
+					// for (int j = 0; j < n.size(); j++) {
+					// int updatedWeight = path.get(path.size() - 1)
+					// .getVerticeWeight()
+					// + n.get(j).getEdgeWeight();
+					//
+					// // ridemap.get(s)
+					// // .setVerticeWeight(updatedWeight);
+					//
+					// n.get(j).setEdgeWeight(updatedWeight);
+					// } // end of relaxation step
 
 					Collections.sort(n);
 
@@ -174,6 +174,7 @@ public class BFS {
 	 */
 	public int getTime() {
 
+		time = 0;
 		// loop path
 		for (int i = 0; i < path.size(); i++) {
 
@@ -189,7 +190,9 @@ public class BFS {
 			// loop neighbors of current index in path
 			for (int n = 0; n < nTmp.size(); n++) {
 				if (next.equals(nTmp.get(n).getNeighbor())) {
-					time += nTmp.get(n).getEdgeWeight();
+					int adj = nTmp.get(n).getEdgeWeight();
+					System.out.println(adj);
+					time += adj;
 				}
 			}
 		}
