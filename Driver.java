@@ -97,7 +97,7 @@ public class Driver {
 		/////
 
 		ArrayList<Attractions> one = bfs.getPath(
-				parkMap.get("Splash Mountain"),
+				parkMap.get("Space Mountain"),
 				parkMap.get("ENTRANCE"));
 
 		for (int o = 0; o < one.size(); o++) {
