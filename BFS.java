@@ -193,7 +193,7 @@ public class BFS {
 				}
 			}
 		}
-		System.out.println("Net Time:\t" + time);
+
 		return time;
 	} // End of the 'getTime' method
 

@@ -108,7 +108,9 @@ public class Driver {
 		}
 		////
 
-		while (!currentPosition.getName().equals("ENTRANCE")) {
+		boolean done = false;
+
+		while (!done) {
 
 			remainingTime = timeAllotted - totalTime;
 
@@ -132,6 +134,7 @@ public class Driver {
 			if (routeToDest.size() == 0) {
 				dest = parkMap.get("ENTRANCE");
 				bfs.getPath(currentPosition, bfs.ridemap.get(0));
+				done = !done;
 			}
 
 			for (int i = 1; i < routeToDest.size(); i++)
@@ -142,5 +145,5 @@ public class Driver {
 			rideCounter++;
 		}
 
-	}
+	} // end main
 }
