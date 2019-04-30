@@ -170,4 +170,12 @@ public class Attractions implements Comparable<Attractions> {
 
 	} // End of the 'compareTo' method
 
+	@Override
+	public String toString() {
+		String str = "";
+		str += this.name;
+		str += " : " + this.verticeWeight;
+		return str;
+	}
+
 } // End of the 'Attractions' class
