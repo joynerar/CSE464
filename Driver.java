@@ -7,11 +7,9 @@ import java.util.Queue;
 public class Driver {
 	static BFS bfs;
 
-	private static ArrayList<Attractions> checkRouteToDest(
-			Attractions current, Attractions destination,
+	private static ArrayList<Attractions> checkRouteToDest(Attractions current, Attractions destination,
 			int timeRemaining, BFS bfs) {
-		ArrayList<Attractions> routeToNext = bfs.getPath(destination,
-				current);
+		ArrayList<Attractions> routeToNext = bfs.getPath(destination, current);
 		int routeToNextTime = bfs.getTime();
 
 		if (routeToNextTime < timeRemaining) {
@@ -24,11 +22,9 @@ public class Driver {
 		return new ArrayList<Attractions>();
 	}
 
-	private static Attractions getSmallestNeighbor(
-			Queue<Attractions> route, Attractions currentPosition,
+	private static Attractions getSmallestNeighbor(Queue<Attractions> route, Attractions currentPosition,
 			int timeRemaining) {
-		ArrayList<Neighbor> currentNeighbors = currentPosition
-				.getNeighbors();
+		ArrayList<Neighbor> currentNeighbors = currentPosition.getNeighbors();
 		ArrayList<Attractions> restOfMap = bfs.ridemap;
 
 		// Gets intersection of path and map
@@ -37,15 +33,13 @@ public class Driver {
 				restOfMap.remove(a);
 
 		// Sort remaining attractions by waitTime
-		restOfMap
-				.sort(Comparator.comparing(Attractions::getWaitTime));
+		restOfMap.sort(Comparator.comparing(Attractions::getWaitTime));
 
 		return restOfMap.get(0);
 	}
 
 	public static void main(String[] args) {
-		IO inout = new IO("mapJ.txt", "user2.txt", "connectJ.txt",
-				"outputfile.txt");
+		IO inout = new IO("map2.txt", "user2.txt", "connect2.txt", "outputfile.txt");
 		// Walking directions though the park
 		Queue<Attractions> route = new LinkedList<Attractions>();
 		// Total time a user wants to stay at park
@@ -55,13 +49,10 @@ public class Driver {
 		// list of attractions visited
 		ArrayList<Attractions> visitedAttractions = null;
 		// The map
-		HashMap<String, Attractions> parkMap = inout
-				.getAttractionList();
-		HashMap<String, Attractions> userDestinations = inout
-				.getUserPrefs();
+		HashMap<String, Attractions> parkMap = inout.getAttractionList();
+		HashMap<String, Attractions> userDestinations = inout.getUserPrefs();
 		ArrayList<String> mapKeys = inout.getMapKeys();
-		ArrayList<String> userDestinationKeys = inout
-				.getUserPrefKeys();
+		ArrayList<String> userDestinationKeys = inout.getUserPrefKeys();
 		// Current position for creating schedule
 		Attractions currentPosition = parkMap.get("ENTRANCE");
 		int rideCounter = 0; // L
@@ -69,8 +60,7 @@ public class Driver {
 		Attractions dest = null;
 		int remainingTime = 0;
 
-		ArrayList<Attractions> map = new ArrayList<Attractions>(
-				parkMap.values());
+		ArrayList<Attractions> map = new ArrayList<Attractions>(parkMap.values());
 		map.sort(Comparator.comparing(Attractions::getName));
 
 		for (int i = 0; i < map.size(); i++) {
@@ -83,11 +73,9 @@ public class Driver {
 			output += "\nNeighbors: ";
 			ArrayList<Neighbor> neighbors = map.get(i).getNeighbors();
 			for (int n = 0; n < neighbors.size(); n++) {
-				output += "\t"
-						+ neighbors.get(n).getNeighbor().getName();
+				output += "\t" + neighbors.get(n).getNeighbor().getName();
 				//
-				output += "\t" + neighbors.get(n).getEdgeWeight()
-						+ "\n";
+				output += "\t" + neighbors.get(n).getEdgeWeight() + "\n";
 			}
 			output += "\n";
 			System.out.println(output);
@@ -96,8 +84,7 @@ public class Driver {
 
 		/////
 
-		ArrayList<Attractions> one = bfs.getPath(parkMap.get("2"),
-				parkMap.get("4"));
+		ArrayList<Attractions> one = bfs.getPath(parkMap.get("ENTRANCE"), parkMap.get("Splash Mountain"));
 
 		for (int o = 0; o < one.size(); o++) {
 			if (one.get(o) != null) {
@@ -120,14 +107,11 @@ public class Driver {
 			 */
 
 			if (rideCounter < userDestinations.size()) {
-				dest = parkMap.get(userDestinations
-						.get(mapKeys.get(rideCounter)));
+				dest = parkMap.get(userDestinations.get(mapKeys.get(rideCounter)));
 			} else {
-				dest = getSmallestNeighbor(route, dest,
-						remainingTime);
+				dest = getSmallestNeighbor(route, dest, remainingTime);
 			}
-			ArrayList<Attractions> routeToDest = checkRouteToDest(
-					currentPosition, dest, remainingTime, bfs);
+			ArrayList<Attractions> routeToDest = checkRouteToDest(currentPosition, dest, remainingTime, bfs);
 			if (routeToDest.size() == 0) {
 				dest = parkMap.get("ENTRANCE");
 				bfs.getPath(currentPosition, bfs.ridemap.get(0));
