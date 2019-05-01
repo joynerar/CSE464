@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class TestBfs {
+public class TestSearch {
 	////
 
 	public static void main(String[] args) {
