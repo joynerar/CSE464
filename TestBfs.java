@@ -75,7 +75,7 @@ public class TestBfs {
 		// output += "\n";
 		// System.out.println(output);
 		// }
-		BFS bfs = new BFS(map);
+		Search bfs = new Search(map);
 		ArrayList<Attractions> one = bfs.getPath(attraction2,
 				attraction4);
 

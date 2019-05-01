@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class Driver {
 	// Instance variables
-	static BFS							bfs;
+	static Search						dj;
 	static IO							io;
 	static HashMap<String, Attractions>	parkMap;
 	static HashMap<String, Attractions>	userDestinations;
@@ -22,7 +22,7 @@ public class Driver {
 		map = new ArrayList<Attractions>(parkMap.values());
 		usrPref = new ArrayList<Attractions>(
 				userDestinations.values());
-		bfs = new BFS(map);
+		dj = new Search(map);
 
 		path = new ArrayList<Attractions>();
 
@@ -51,7 +51,7 @@ public class Driver {
 			}
 
 			// get the path
-			ArrayList<Attractions> returnedPath = bfs.getPath(dest,
+			ArrayList<Attractions> returnedPath = dj.getPath(dest,
 					origin);
 
 			// remove first Attractions object from path on every

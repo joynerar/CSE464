@@ -3,11 +3,11 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 /**
- * This is the class that will handle the BFS algorithm.
+ * This is the class that will handle the Search algorithm.
  * 
  * @author Josh Overbeck
  */
-public class BFS {
+public class Search {
 
 	// Declaring instance variables
 	public ArrayList<Attractions>	ridemap;
@@ -16,7 +16,7 @@ public class BFS {
 	ArrayList<Attractions>			path;
 
 	// Default Constructor
-	public BFS(ArrayList<Attractions> map) {
+	public Search(ArrayList<Attractions> map) {
 		// Initializing the instance variables
 		this.ridemap = map;
 		this.time = 0;
@@ -209,4 +209,4 @@ public class BFS {
 
 	} // End of the 'cleanPath' method
 
-} // End of the 'BFS' class
+} // End of the 'Search' class
