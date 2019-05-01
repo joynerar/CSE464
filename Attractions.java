@@ -174,7 +174,7 @@ public class Attractions implements Comparable<Attractions> {
 	public String toString() {
 		String str = "";
 		str += this.name;
-		str += " : " + this.verticeWeight;
+		// str += " : " + this.verticeWeight;
 		return str;
 	}
 
