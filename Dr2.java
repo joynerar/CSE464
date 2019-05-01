@@ -38,8 +38,10 @@ public class Dr2 {
 		Attractions origin = new Attractions();
 		Attractions dest = new Attractions();
 
+		// loop through user preferences
 		for (int i = 0; i < usrPref.size(); i++) {
 
+			// initialize origin and dest
 			if (i == 0) {
 				origin = parkMap.get("ENTRANCE");
 				dest = usrPref.get(i);
@@ -48,9 +50,21 @@ public class Dr2 {
 				dest = usrPref.get(i);
 			}
 
-			path.addAll(bfs.getPath(dest, origin));
+			// get the path
+			ArrayList<Attractions> returnedPath = bfs.getPath(dest,
+					origin);
+
+			// remove first Attractions object from path on every
+			// iteration ACCEPT for the first iteration
+			if (i > 0) {
+				returnedPath.remove(0);
+			}
+
+			// Concatenate the path to the global path
+			path.addAll(returnedPath);
 		} // End loop
 
+		// Print for testing
 		for (Attractions a : path) {
 			System.out.println(a.toString());
 		}
