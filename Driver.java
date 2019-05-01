@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Dr2 {
+public class Driver {
 	// Instance variables
 	static BFS							bfs;
 	static IO							io;
@@ -71,4 +71,4 @@ public class Dr2 {
 
 	} // End of the 'buildPath' method
 
-} // End of the 'Dr2' class
+} // End of the 'Driver' class
