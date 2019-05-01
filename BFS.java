@@ -46,7 +46,6 @@ public class BFS {
 		// Queue<Attractions> queue = new LinkedList<Attractions>();
 		PriorityQueue<Attractions> queue = new PriorityQueue<Attractions>();
 
-		time = 0;
 		path = new ArrayList<Attractions>();
 
 		queue.add(currentPos);
@@ -54,7 +53,6 @@ public class BFS {
 
 		boolean isDone = false;
 		time = 0; // reset time
-		int index = 0;
 
 		while (!queue.isEmpty()) {
 			if (isDone) {
@@ -63,37 +61,18 @@ public class BFS {
 
 			path.add(queue.poll());
 
-			// ArrayList<Neighbor> n = path.get(index).getNeighbors();
 			ArrayList<Neighbor> n = path.get(path.size() - 1)
 					.getNeighbors();
-
-			// sort n
-			// Arrays.sort(n);
-			// n.sort(n);
-			// Collections.sort(n);
 
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
 					visited[s] = true;
 
-					// // Relaxing step
-					// for (int j = 0; j < n.size(); j++) {
-					// int updatedWeight = path.get(path.size() - 1)
-					// .getVerticeWeight()
-					// + n.get(j).getEdgeWeight();
-					//
-					// // ridemap.get(s)
-					// // .setVerticeWeight(updatedWeight);
-					//
-					// n.get(j).setEdgeWeight(updatedWeight);
-					// } // end of relaxation step
-
 					Collections.sort(n);
 
 					// has neighbors
 					queue.add(ridemap.get(s));
-					// queue.add(n.get(0).getNeighbor());
 
 					if (ridemap.get(s).equals(target)) {
 						path.add(ridemap.get(s));
@@ -102,11 +81,9 @@ public class BFS {
 					}
 				}
 			}
-			// path.add(queue.poll()); // obsolete
-			index++;
 		}
-		cleanPath();
-		// getTime(); // obsolete
+		// cleanPath();
+
 		return path;
 	} // End of the 'getPath' method
 
@@ -120,14 +97,6 @@ public class BFS {
 			visited[i] = false;
 		}
 	} // End of the 'initVisitedList' method
-
-	/**
-	 * This is the method that will reset the states of all the items
-	 * in the visited array.
-	 */
-	private void resetVisitedList() {
-		initVisitedList();
-	} // End of the 'resetVisitedList' method
 
 	/**
 	 * This is a private helper method that will find the index of the
@@ -197,14 +166,15 @@ public class BFS {
 			}
 		}
 
-		// time = 0;
-		// for (int i = 0; i < path.size(); i++) {
-		// time += path.get(i).getVerticeWeight();
-		// }
-		// System.out.println("NetTime: " + time);
 		return time;
 	} // End of the 'getTime' method
 
+	/**
+	 * This is a method that will clean up the global path variable.
+	 * It will iterate through the path. It will make sure that all of
+	 * the Attractions objects in the path are connected. When there
+	 * is one that is not connected, it will be removed from the path.
+	 */
 	private void cleanPath() {
 		int count = path.size();
 		int index = 0;
@@ -220,13 +190,13 @@ public class BFS {
 			}
 			if (!connected) {
 				path.remove(index);
-				// index--;
+
 			} else {
 				index++;
 			}
 
 		}
 
-	}
+	} // End of the 'cleanPath' method
 
 } // End of the 'BFS' class
