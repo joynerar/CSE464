@@ -43,7 +43,7 @@ public class BFS {
 		initVisitedList();
 		// Set weight of starting point to zero
 		currentPos.setVerticeWeight(0);
-		// Queue<Attractions> queue = new LinkedList<Attractions>();
+
 		PriorityQueue<Attractions> queue = new PriorityQueue<Attractions>();
 
 		time = 0;
@@ -63,37 +63,18 @@ public class BFS {
 
 			path.add(queue.poll());
 
-			// ArrayList<Neighbor> n = path.get(index).getNeighbors();
 			ArrayList<Neighbor> n = path.get(path.size() - 1)
 					.getNeighbors();
-
-			// sort n
-			// Arrays.sort(n);
-			// n.sort(n);
-			// Collections.sort(n);
 
 			for (int i = 0; i < n.size(); i++) {
 				int s = getStartingPointIndex(n.get(i).getNeighbor());
 				if (visited[s] == false) {
 					visited[s] = true;
 
-					// // Relaxing step
-					// for (int j = 0; j < n.size(); j++) {
-					// int updatedWeight = path.get(path.size() - 1)
-					// .getVerticeWeight()
-					// + n.get(j).getEdgeWeight();
-					//
-					// // ridemap.get(s)
-					// // .setVerticeWeight(updatedWeight);
-					//
-					// n.get(j).setEdgeWeight(updatedWeight);
-					// } // end of relaxation step
-
 					Collections.sort(n);
 
 					// has neighbors
 					queue.add(ridemap.get(s));
-					// queue.add(n.get(0).getNeighbor());
 
 					if (ridemap.get(s).equals(target)) {
 						path.add(ridemap.get(s));
@@ -102,11 +83,11 @@ public class BFS {
 					}
 				}
 			}
-			// path.add(queue.poll()); // obsolete
+
 			index++;
 		}
 		cleanPath();
-		// getTime(); // obsolete
+
 		return path;
 	} // End of the 'getPath' method
 
@@ -197,14 +178,13 @@ public class BFS {
 			}
 		}
 
-		// time = 0;
-		// for (int i = 0; i < path.size(); i++) {
-		// time += path.get(i).getVerticeWeight();
-		// }
-		// System.out.println("NetTime: " + time);
 		return time;
 	} // End of the 'getTime' method
 
+	/**
+	 * This method will remove any vertice that is not directly
+	 * connected to the previous node in the path.
+	 */
 	private void cleanPath() {
 		int count = path.size();
 		int index = 0;
@@ -227,6 +207,6 @@ public class BFS {
 
 		}
 
-	}
+	} // End of the 'cleanPath' method
 
 } // End of the 'BFS' class
